@@ -209,6 +209,17 @@ public class Status : MonoBehaviour
     [SerializeField]
     bool isJumping = false;
 
+    /// <summary>
+    /// 攻撃中か
+    /// </summary>
+    [SerializeField]
+    bool isAttacking = false;
+    /// <summary>
+    /// ダメージを受けてひるんでいる状態か
+    /// </summary>
+    [SerializeField]
+    bool isDamaging = false;
+
 
 
     /// <summary>

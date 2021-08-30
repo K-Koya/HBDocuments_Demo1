@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 照準用キャンバス
 /// </summary>
-public class AimMovement : MonoBehaviour
+public class AimMovement : MyMonoBehaviour
 {
     /// <summary>
     /// メインカメラ用タグ
@@ -42,15 +42,22 @@ public class AimMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    //void Update()
+    //{
+        
+    //}
+
+    void FixedUpdate()
     {
+        if (IsPausing) return;
+
         //地面レイ検索用クラス
         RaycastHit rayhitGround = default;
         //Rayの地面への接触点
         Vector3 rayhitPos = Vector3.zero;
 
         //プレイヤー位置からカメラ前方方向に地面を探索
-        if(Physics.Raycast(status.EyePoint.transform.position, mainCamera.transform.forward, out rayhitGround, status.LockMaxRange, groundLayer))
+        if (Physics.Raycast(status.EyePoint.transform.position, mainCamera.transform.forward, out rayhitGround, status.LockMaxRange, groundLayer))
         {
             //確認できたら該当座標を保存
             rayhitPos = rayhitGround.point;

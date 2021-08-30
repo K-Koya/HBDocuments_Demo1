@@ -90,12 +90,10 @@ public class MoveForAllies : MoveForAbstruct
         GroundedCheck();
         NavMeshMove();
         VerticalMove();
-    }
 
-    void FixedUpdate()
-    {
         ResultSpeedCheck();
     }
+
 
     /// <summary>
     /// 一定間隔でNavMesh上の目的地を決定するコルーチン

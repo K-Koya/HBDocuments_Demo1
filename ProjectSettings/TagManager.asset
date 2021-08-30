@@ -9,6 +9,7 @@ TagManager:
   - Input
   - Ground
   - GUI3DAim
+  - AttackArea
   layers:
   - Default
   - TransparentFX
