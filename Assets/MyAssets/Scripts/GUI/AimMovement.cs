@@ -37,15 +37,11 @@ public class AimMovement : MyMonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TimelineInit();
         mainCamera = GameObject.FindWithTag(mainCameraTag).GetComponent<Camera>();
         status = GameObject.FindWithTag(playerTag).GetComponent<Status>();
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
 
     void FixedUpdate()
     {
