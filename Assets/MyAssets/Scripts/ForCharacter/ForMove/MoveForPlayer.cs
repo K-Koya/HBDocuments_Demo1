@@ -9,11 +9,6 @@ using Chronos;
 public class MoveForPlayer : MoveForAbstruct
 {
     /// <summary>
-    /// プレイヤー入力のMyInputManagerのあるオブジェクトを探すためのタグ
-    /// </summary>
-    [SerializeField]
-    string inputObjectTag = "Input";
-    /// <summary>
     /// 入力情報を持つコンポーネント
     /// </summary>
     MyInputManager input = default;
@@ -45,7 +40,7 @@ public class MoveForPlayer : MoveForAbstruct
         rb = time.rigidbody;
         playerCamera = GameObject.FindWithTag(playerCameraTag);
         status = GetComponent<Status>();
-        input = GameObject.FindWithTag(inputObjectTag).GetComponent<MyInputManager>();
+        input = FindObjectOfType<MyInputManager>();
         layerNumberOfGround = (byte)LayerMask.NameToLayer(layerNameOfGround);
     }
 
