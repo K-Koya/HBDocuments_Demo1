@@ -95,11 +95,6 @@ public class Status : MonoBehaviour
     [SerializeField, Range(500,2000), Tooltip("最大HP")]
     short maxHP = 1000;
     /// <summary>
-    /// 現在HP
-    /// </summary>
-    [SerializeField, Range(500, 2000), Tooltip("現在HP")]
-    short nowHP = 1000;
-    /// <summary>
     /// 直接攻撃
     /// </summary>
     [SerializeField, Range(500, 2000), Tooltip("直接攻撃")]
@@ -137,6 +132,11 @@ public class Status : MonoBehaviour
 
 
     [Header("補助技能数値")]
+    /// <summary>
+    /// 現在HP
+    /// </summary>
+    [SerializeField, Range(500, 2000), Tooltip("現在HP")]
+    short nowHP = 1000;
     /// <summary>
     /// 最大MP
     /// </summary>
@@ -210,17 +210,20 @@ public class Status : MonoBehaviour
     bool isJumping = false;
 
     /// <summary>
-    /// 攻撃中か
+    /// コマンド実行中か
     /// </summary>
     [SerializeField]
-    bool isAttacking = false;
+    bool isCommandRunning = false;
     /// <summary>
     /// ダメージを受けてひるんでいる状態か
     /// </summary>
     [SerializeField]
     bool isDamaging = false;
 
-
+    /// <summary>
+    /// 照準システム
+    /// </summary>
+    AimSystemForPlayer aim = default;
 
     /// <summary>
     /// 客観的に見た速度
@@ -236,7 +239,6 @@ public class Status : MonoBehaviour
     public float Weight { get => weight; set => weight = value; }
     public GameObject EyePoint { get => eyePoint; set => eyePoint = value; }
     public short MaxHP { get => maxHP; set => maxHP = value; }
-    public short NowHP { get => nowHP; set => nowHP = value; }
     public short Attack { get => attack; set => attack = value; }
     public short Defense { get => defense; set => defense = value; }
     public short Magic { get => magic; set => magic = value; }
@@ -244,6 +246,7 @@ public class Status : MonoBehaviour
     public short Rapid { get => rapid; set => rapid = value; }
     public short Technique { get => technique; set => technique = value; }
     public short Luck { get => luck; set => luck = value; }
+    public short NowHP { get => nowHP; set => nowHP = value; }
     public short MaxMP { get => maxMP; set => maxMP = value; }
     public short NowMP { get => nowMP; set => nowMP = value; }
     public float MaxWalkSpeed { get => maxWalkSpeed; set => maxWalkSpeed = value; }
@@ -257,7 +260,11 @@ public class Status : MonoBehaviour
     public Vector3 GravitySize { get => gravitySize; set => gravitySize = value; }
     public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
     public bool IsJumping { get => isJumping; set => isJumping = value; }
+    public bool IsCommandRunning { get => isCommandRunning; set => isCommandRunning = value; }
+    public bool IsDamaging { get => isDamaging; set => isDamaging = value; }
     public float ResultSpeed { get => resultSpeed; set => resultSpeed = value; }
+    public AimSystemForPlayer Aim { get => aim; set => aim = value; }
+
 
 
     /// <summary>

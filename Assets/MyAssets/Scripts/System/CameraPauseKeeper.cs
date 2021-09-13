@@ -11,12 +11,12 @@ using Chronos;
 public class CameraPauseKeeper : MyMonoBehaviour
 {
     /// <summary>
-    /// Cinemachine等を非アクティブにするメソッドを定義する
+    /// ポーズ実施によりCinemachine等を非アクティブにするメソッドを定義する
     /// </summary>
     [SerializeField]
     UnityEvent cameraPauseActivate = default;
     /// <summary>
-    /// Cinemachine等をアクティブにするメソッドを定義する
+    /// ポーズ解除によりCinemachine等をアクティブにするメソッドを定義する
     /// </summary>
     [SerializeField]
     UnityEvent cameraPauseInactivate = default;

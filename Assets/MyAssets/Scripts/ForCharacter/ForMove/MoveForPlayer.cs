@@ -75,14 +75,16 @@ public class MoveForPlayer : MoveForAbstruct
         //カメラ視点の右方向
         Vector3 right = cameraTransform.right;
 
-        //ブレーキフラグ
-        bool isBraking = false;
-
         //プレイヤーの移動入力を取得
         float horizontal = input.Move.Axis2d.x;
         float vartical = input.Move.Axis2d.y;
+        if (status.IsCommandRunning || status.IsDamaging)
+        {
+            horizontal = 0.0f;
+            vartical = 0.0f;
+        }
 
-        //プレーヤーを移動させたい度合・方向を取得
+        //プレーヤーを移動させることができる状態なら、移動させたい度合・方向を取得
         moveDirectionHorizontal = Vector3.Normalize(horizontal * right + vartical * forward);
 
 
@@ -212,7 +214,7 @@ public class MoveForPlayer : MoveForAbstruct
     }
 
     /// <summary>
-    /// 客観速度処理
+    /// 客観速度計測
     /// </summary>
     void ResultSpeedCheck()
     {

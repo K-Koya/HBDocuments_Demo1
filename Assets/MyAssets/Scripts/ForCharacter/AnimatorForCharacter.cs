@@ -13,9 +13,23 @@ using Chronos;
 public class AnimatorForCharacter : MyMonoBehaviour
 {
     /// <summary>
-    /// キャラクターにアタッチされているTimeline
+    /// animatorに渡すパラメーター名:Speed
     /// </summary>
-    Timeline timeline = default;
+    static string animParamNameSpeed = "Speed";
+    /// <summary>
+    /// animatorに渡すパラメーター名:IsGrounded
+    /// </summary>
+    static string animParamNameIsGrounded = "IsGrounded";
+    /// <summary>
+    /// animatorに渡すパラメーター名:IsJumping
+    /// </summary>
+    static string animParamNameIsJumping = "IsJumping";
+    /// <summary>
+    /// animatorに渡すパラメーター名:DoEyeBlink
+    /// </summary>
+    static string animParamNameDoEyeBlink = "DoEyeBlink";
+
+
 
     /// <summary>
     /// キャラクターにアタッチされているAnimator
@@ -31,22 +45,34 @@ public class AnimatorForCharacter : MyMonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeline = GetComponent<Timeline>();
-        animator = timeline.animator.component;
+        TimelineInit();
+        animator = time.animator.component;
         status = GetComponent<Status>();
+
+        StartCoroutine(EyeBlink());
     }
 
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("Speed", status.ResultSpeed);
-        animator.SetBool("IsGrounded", status.IsGrounded);
-        animator.SetBool("IsJumping", status.IsJumping);
+        if (IsPausing) return;
+
+        animator.SetFloat(animParamNameSpeed, status.ResultSpeed);
+        animator.SetBool(animParamNameIsGrounded, status.IsGrounded);
+        animator.SetBool(animParamNameIsJumping, status.IsJumping);
     }
 
-    void FixedUpdate()
+    /// <summary>
+    /// 瞬きを一定間隔で要求
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator EyeBlink()
     {
-        //瞬きを制御する
-        if (Random.Range(0, 500) <= 2) animator.SetTrigger("DoEyeBlink");
+        while (gameObject)
+        {
+            //瞬きを制御する
+            if (Random.Range(0, 5) <= 1) animator.SetTrigger(animParamNameDoEyeBlink);
+            yield return time.WaitForSeconds(0.5f);
+        }
     }
 }

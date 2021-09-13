@@ -1,79 +1,12 @@
 fileFormatVersion: 2
-guid: 69dee0b52a7a71644bada28303e1e6a0
+guid: 96982e2bd6b9c614bb76e261aae6875c
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30A2\u30A4\u30E9_\u9774_\u9774\u4E0B__\u30A2\u30A4\u30E9_\u9774_\u9774\u4E0B_png"
-    second: {fileID: 2100000, guid: 5674dee4b4234a842a86477a7a499c31, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DE\u30C6\u30EA\u30A2\u30EB__\u30DF\u30CA\u30D2\u30C8_\u30B7\u30E3\u30C4\u30D6\u30EC\u30B6\u30FC_png"
-    second: {fileID: 2100000, guid: 371c66a40009aec4aba84cfda2efeaf7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DF\u30CA\u30D2\u30C8_\u307E\u3064\u6BDB__F00_000_00_FaceEyeline_00_png"
-    second: {fileID: 2100000, guid: 6e4374d328b34f443bdb91cdc9041546, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DF\u30CA\u30D2\u30C8_\u30B9\u30E9\u30C3\u30AF\u30B9__\u30DF\u30CA\u30D2\u30C8_\u30B9\u30E9\u30C3\u30AF\u30B9_png"
-    second: {fileID: 2100000, guid: 5e094de0a95acf542a16f341cd0e35bb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DF\u30CA\u30D2\u30C8_\u53E3\u5185__F00_000_00_FaceMouth_00_png"
-    second: {fileID: 2100000, guid: 4cd1f73f5418169449a90e179ffa62a2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DF\u30CA\u30D2\u30C8_\u767D\u76EE__F00_000_00_EyeWhite_00_png"
-    second: {fileID: 2100000, guid: 2f31eb92d7016cd44853922a248ed660, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DF\u30CA\u30D2\u30C8_\u7709\u6BDB__F00_000_00_FaceBrow_00_png"
-    second: {fileID: 2100000, guid: 39b3e8178d193a64696e44132cc1c83a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DF\u30CA\u30D2\u30C8_\u77B3__\u30DF\u30CA\u30D2\u30C8_\u76EE_png"
-    second: {fileID: 2100000, guid: 889eb7c3bf8cf5144a497c92204b8084, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DF\u30CA\u30D2\u30C8_\u80F4\u4F53__F00_000_00_Body_00_png"
-    second: {fileID: 2100000, guid: 3f8d92b9b376da54a89bee36709fffad, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DF\u30CA\u30D2\u30C8_\u9854__F00_000_00_Face_00_png"
-    second: {fileID: 2100000, guid: eb41faebe8d014641b816755faffa63f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DF\u30CA\u30D2\u30C8_\u9AEA__F00_000_Hair_00_png"
-    second: {fileID: 2100000, guid: 4332c6d30836df348bac227c5d33853d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30DF\u30CA\u30D2\u30C8_\u9AEA\u751F\u3048\u969B__F00_000_HairBack_00_png"
-    second: {fileID: 2100000, guid: 321ec5f2d4eecb74887b0007427ed865, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u30EA\u30DC\u30F3\u30BF\u30A4__\u6C4E\u4EC1_\u30EA\u30DC\u30F3\u30BF\u30A4_png"
-    second: {fileID: 2100000, guid: dcafa87f8e835284db48b09894e3141d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u9AEA\u7559\u3081__\u6C4E\u4EC1_\u7887\u306E\u9AEA\u7559\u3081_png"
-    second: {fileID: 2100000, guid: 56696ae3cbacaad42b7cd2bbaf4588be, type: 2}
+      74: -2958552911042767257
+    second: "C52_\u97AD2\u56DE\u5927\u56DE\u8EE2"
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -100,7 +33,78 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: "C52_\u97AD2\u56DE\u5927\u56DE\u8EE2"
+      takeName: "C52_\u97AD2\u56DE\u5927\u56DE\u8EE2"
+      internalID: 0
+      firstFrame: -1
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.10714286
+        functionName: HitAreaColliderActivate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.21428572
+        functionName: HitAreaColliderInactivate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.64316654
+        functionName: HitAreaColliderActivate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7404762
+        functionName: HitAreaColliderInactivate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9612321
+        functionName: Acceptable
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9702583
+        functionName: EndOfAction
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -138,12 +142,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 3240f6107bece054294de0483b688aa9
-  - 0fc1f0ba469318147bc0bc1adb18bfa9
-  - 0e8c48976cc926a4380b83e92552a102
-  - a1de4665d7a415f488088de76560ebb2
-  - 96982e2bd6b9c614bb76e261aae6875c
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -1146,11 +1145,12 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 69dee0b52a7a71644bada28303e1e6a0,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
