@@ -109,6 +109,7 @@ public class CommandHolderForPlayer : MyMonoBehaviour
             if(input.Combo.NowPushDown != PushType.noPush)
             {
                 running = combo;
+                running.LookTarget = aim.transform.position;
                 running.Run();
                 forRunning = input.Combo;
             }
@@ -129,6 +130,7 @@ public class CommandHolderForPlayer : MyMonoBehaviour
     {
         if (running)
         {
+            running.LookTarget = aim.transform.position;
             aim.Info = running.Info;
             aim.Area.enabled = true;
         }

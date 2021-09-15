@@ -43,6 +43,11 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     /// </summary>
     protected bool isEndOfAction = true;
 
+    /// <summary>
+    /// 照準を合わせている対象
+    /// </summary>
+    protected Vector3 lookTarget = default;
+
 
     /// <summary>
     /// 初期化
@@ -92,6 +97,7 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     public PushType Acception { get => acception; set => acception = value; }
     public bool IsEndOfAction { get => isEndOfAction; set => isEndOfAction = value; }
     public bool IsAcceptable { get => isAcceptable; set => isAcceptable = value; }
+    public Vector3 LookTarget { get => lookTarget; set => lookTarget = value; }
 }
 
 /// <summary>
@@ -166,6 +172,12 @@ public struct AttackInfo
     /// </summary>
     [Tooltip("技の威力補正")]
     public float powerRatio;
+
+    /// <summary>
+    /// 技が当たった際の吹き飛び量の基準
+    /// </summary>
+    [Tooltip("技が当たった際の吹き飛び量の基準")]
+    public Vector3 impact;
 }
 
 /// <summary>

@@ -22,6 +22,7 @@ public class ComboForMinahito : ComboCommand
         /* コンボ1段目 */
         //アニメーションを開始
         animator.SetTrigger(ANIM_PARAM_NAME_DO_NEXT_ACTION);
+        animator.transform.LookAt(lookTarget.YEqual());
         //アクション終了まで待つ
         while (!isAcceptable) yield return null;
 
@@ -45,6 +46,7 @@ public class ComboForMinahito : ComboCommand
         isAcceptable = false;
         //アニメーションを開始
         animator.SetTrigger(ANIM_PARAM_NAME_DO_NEXT_ACTION);
+        animator.transform.LookAt(lookTarget.YEqual());
         //アクション終了まで待つ
         while (!isAcceptable) yield return null;
 
@@ -69,6 +71,7 @@ public class ComboForMinahito : ComboCommand
         isAcceptable = false;
         //アニメーションを開始
         animator.SetTrigger(ANIM_PARAM_NAME_DO_NEXT_ACTION);
+        animator.transform.LookAt(lookTarget.YEqual());
         //アクション終了まで待つ
         while (!isAcceptable) yield return null;
 
