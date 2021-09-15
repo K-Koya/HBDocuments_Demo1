@@ -37,6 +37,11 @@ public class MyInputManager : MonoBehaviour
     [SerializeField]
     string buttonNameJump = "Jump";
     /// <summary>
+    /// Inputmanager上の、通常コンボに当たるボタン名
+    /// </summary>
+    [SerializeField]
+    string buttonNameCombo = "Combo";
+    /// <summary>
     /// Inputmanager上の、決定に当たるボタン名
     /// </summary>
     [SerializeField]
@@ -114,6 +119,10 @@ public class MyInputManager : MonoBehaviour
     /// </summary>
     InputKind jump = new InputKind();
     /// <summary>
+    /// 入力:通常コンボ
+    /// </summary>
+    InputKind combo = new InputKind();
+    /// <summary>
     /// 入力:決定
     /// </summary>
     InputKind submit = new InputKind();
@@ -188,6 +197,7 @@ public class MyInputManager : MonoBehaviour
 
     /* プロパティ */
     public InputKind Jump { get => jump; }
+    public InputKind Combo { get => combo; }
     public InputKind Submit { get => submit; }
     public InputKind Cancel { get => cancel; }
     public InputKind Menu { get => menu; }
@@ -196,6 +206,7 @@ public class MyInputManager : MonoBehaviour
     public InputKind CameraZoomScroll { get => cameraZoomScroll; }
     public InputKind Move { get => move; }
     public InputKind CameraSwing { get => cameraSwing; }
+    
 
 
     //public bool IsUseVirtualInput { get => isUseVirtualInput; }
@@ -207,6 +218,7 @@ public class MyInputManager : MonoBehaviour
     void Start()
     {
         jump.Inputs.Add(new KeyClickButtonInput(buttonNameJump));
+        combo.Inputs.Add(new KeyClickButtonInput(buttonNameCombo));
         //jump.Inputs.Add(new VirtualButtonInput(virtualButtonJump));
         submit.Inputs.Add(new KeyClickButtonInput(buttonNameSubmit));
         cancel.Inputs.Add(new KeyClickButtonInput(buttonNameCancel));
@@ -237,6 +249,7 @@ public class MyInputManager : MonoBehaviour
         */
 
         jump.management();
+        combo.management();
         submit.management();
         cancel.management();
         menu.management();
@@ -283,10 +296,10 @@ public class InputKind
 
 
     /*プロパティ*/
-    public PushType NowPushType { get => nowPushType; set => nowPushType = value; }
-    public PushType NowPushDown { get => nowPushDown; set => nowPushDown = value; }
-    public PushType NowPushUp { get => nowPushUp; set => nowPushUp = value; }
-    public Vector2 Axis2d { get => axis2d; set => axis2d = value; }
+    public PushType NowPushType { get => nowPushType; }
+    public PushType NowPushDown { get => nowPushDown; }
+    public PushType NowPushUp { get => nowPushUp; }
+    public Vector2 Axis2d { get => axis2d; }
     public List<AbstractInput> Inputs { get => inputs; set => inputs = value; }
 
     /// <summary>
@@ -401,10 +414,10 @@ abstract public class AbstractInput
     public static float LongPushMargin { get => longPushMargin; set => longPushMargin = value; }
     public static float DoublePushMargin { get => doublePushMargin; set => doublePushMargin = value; }
     public static float NearAxisMargin { get => nearAxisMargin; set => nearAxisMargin = value; }
-    public PushType NowPushType { get => nowPushType; set => nowPushType = value; }
-    public PushType NowPushDown { get => nowPushDown; set => nowPushDown = value; }
-    public PushType NowPushUp { get => nowPushUp; set => nowPushUp = value; }
-    public Vector2 Axis2d { get => axis2d; set => axis2d = value; }
+    public PushType NowPushType { get => nowPushType; }
+    public PushType NowPushDown { get => nowPushDown; }
+    public PushType NowPushUp { get => nowPushUp; }
+    public Vector2 Axis2d { get => axis2d; }
     
 
 

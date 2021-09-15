@@ -38,7 +38,7 @@ InputManager:
     axis: 1
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Attack/Click
+    m_Name: Combo
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -374,7 +374,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Attack/Click
+    m_Name: Combo
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 

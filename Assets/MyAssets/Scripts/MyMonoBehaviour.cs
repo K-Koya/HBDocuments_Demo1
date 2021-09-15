@@ -42,13 +42,13 @@ public static class ExtensionMethods
     /// </summary>
     /// <param name="before">元のベクトル</param>
     /// <param name="valueY">指定するy軸の値</param>
-    /// <returns>y軸を"valueY"にしたベクトル</returns>
+    /// <returns>y軸を"valueY(未指定なら0)"にしたベクトル</returns>
     public static Vector3 YEqual(this Vector3 before, float valueY = 0.0f) { return new Vector3(before.x, valueY, before.z); }
 
     /// <summary>
     /// 3次元ベクトルのy軸を取り除き、xz軸の2次元ベクトルを返す
     /// </summary>
     /// <param name="before">元のベクトル</param>
-    /// <returns></returns>
+    /// <returns>Vector2のy成分に、Vector3のz成分を代入したVector2</returns>
     public static Vector2 ConvVector2_XZ(this Vector3 before) { return new Vector2(before.x, before.z); }
 }

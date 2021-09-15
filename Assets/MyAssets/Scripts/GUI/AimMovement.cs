@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 照準用キャンバス
+/// プレイヤー用の照準移動処理
 /// </summary>
 public class AimMovement : MyMonoBehaviour
 {
