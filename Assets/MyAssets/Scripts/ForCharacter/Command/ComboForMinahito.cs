@@ -19,6 +19,7 @@ public class ComboForMinahito : ComboCommand
         isEndOfAction = false;
         isAcceptable = false;
 
+
         /* コンボ1段目 */
         //アニメーションを開始
         animator.SetTrigger(ANIM_PARAM_NAME_DO_NEXT_ACTION);
@@ -49,7 +50,6 @@ public class ComboForMinahito : ComboCommand
         animator.transform.LookAt(lookTarget.YEqual());
         //アクション終了まで待つ
         while (!isAcceptable) yield return null;
-
 
         //一定時間待ち、追加入力がなければ、このコマンドを終了する
         timer = 0.0f;

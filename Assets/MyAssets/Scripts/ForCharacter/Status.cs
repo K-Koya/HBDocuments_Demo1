@@ -191,6 +191,16 @@ public class Status : MonoBehaviour
     [SerializeField]
     float lockMaxRange = 1.0f;
     /// <summary>
+    /// 通常コンボ近接攻撃の標準射程距離
+    /// </summary>
+    [SerializeField]
+    float comboCommonProximityRange = 1.0f;
+    /// <summary>
+    /// 通常コンボ近接攻撃の遠めの射程距離
+    /// </summary>
+    [SerializeField]
+    float comboFarProximityRange = 1.0f;
+    /// <summary>
     /// 重力ベクトル
     /// </summary>
     [SerializeField]
@@ -257,6 +267,8 @@ public class Status : MonoBehaviour
     public float JumpFirstSpeed { get => jumpFirstSpeed; set => jumpFirstSpeed = value; }
     public bool IsTurnLeft { get => isTurnLeft; set => isTurnLeft = value; }
     public float LockMaxRange { get => lockMaxRange; set => lockMaxRange = value; }
+    public float ComboCommonProximityRange { get => comboCommonProximityRange; set => comboCommonProximityRange = value; }
+    public float ComboFarProximityRange { get => comboFarProximityRange; set => comboFarProximityRange = value; }
     public Vector3 GravitySize { get => gravitySize; set => gravitySize = value; }
     public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
     public bool IsJumping { get => isJumping; set => isJumping = value; }
@@ -264,6 +276,7 @@ public class Status : MonoBehaviour
     public bool IsDamaging { get => isDamaging; set => isDamaging = value; }
     public float ResultSpeed { get => resultSpeed; set => resultSpeed = value; }
     public AimSystemForPlayer Aim { get => aim; set => aim = value; }
+    
 
 
 

@@ -50,20 +50,18 @@ public class Damager : MyMonoBehaviour
         }
     }
 
-
-
     /// <summary>
     /// (攻撃側の攻撃能力値 - 防御側の防御能力値)をした時の差から、威力補正1.0の時のベースとなるダメージ値を算出
     /// -1500の時に10、1500の時に210とする
     /// </summary>
     /// <param name="subtraction">攻撃側の攻撃能力値 - 防御側の防御能力値</param>
-    /// <returns>補助技能数値</returns>
+    /// <returns>威力補正1.0の時のベースとなるダメージ値</returns>
     float calculateDamage(short subtraction)
     {
         //傾き
-        float tilt = 200f / 3000f;
+        float tilt = 200f / 3000f;  // (210 - 10) / (1500 - (-1500))
         //切片
-        float segment = 100f;
+        float segment = 100f;       // 210 - (1500 * tilt)
 
         //傾き、切片、能力値差よりベースのダメージ値を算出
         return (subtraction * tilt) + segment;

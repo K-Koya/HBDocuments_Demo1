@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Chronos;
 
-
-
 /// <summary>
 /// 照準による動作コンポーネント
 /// </summary>
@@ -33,7 +31,7 @@ public class AimSystemForPlayer : AimSystem
         if (IsPausing) return;
 
         Vector3 direction = Vector3.Normalize(playersAim.transform.position - status.transform.position);
-        transform.position = status.transform.position + direction * 3.0f;
+        transform.position = status.transform.position + direction * status.ComboCommonProximityRange;
     }
 
 
