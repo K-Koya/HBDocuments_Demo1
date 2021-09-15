@@ -135,7 +135,7 @@ public class Status : MonoBehaviour
     /// <summary>
     /// 現在HP
     /// </summary>
-    [SerializeField, Range(500, 2000), Tooltip("現在HP")]
+    [SerializeField, Tooltip("現在HP")]
     short nowHP = 1000;
     /// <summary>
     /// 最大MP

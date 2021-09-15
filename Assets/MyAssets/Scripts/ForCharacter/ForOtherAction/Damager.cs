@@ -44,9 +44,8 @@ public class Damager : MyMonoBehaviour
                                         enemysAim.Status.Magic - status.Shield
                                         : enemysAim.Status.Attack - status.Defense);
 
-            Debug.Log("Hit! : " + calculateDamage(subtraction) * attackInfo.powerRatio);
-
-
+            //HPを減らす(0を下回らないようにする)
+            status.NowHP = (short)Mathf.Max(status.NowHP - (calculateDamage(subtraction) * attackInfo.powerRatio), 0.0f);
         }
     }
 
@@ -61,7 +60,7 @@ public class Damager : MyMonoBehaviour
         //傾き
         float tilt = 200f / 3000f;  // (210 - 10) / (1500 - (-1500))
         //切片
-        float segment = 100f;       // 210 - (1500 * tilt)
+        float segment = 110f;       // 210 - (1500 * tilt)
 
         //傾き、切片、能力値差よりベースのダメージ値を算出
         return (subtraction * tilt) + segment;

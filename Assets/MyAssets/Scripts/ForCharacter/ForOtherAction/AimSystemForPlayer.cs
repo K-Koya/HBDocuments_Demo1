@@ -29,9 +29,10 @@ public class AimSystemForPlayer : AimSystem
     void Update()
     {
         if (IsPausing) return;
-
-        Vector3 direction = Vector3.Normalize(playersAim.transform.position - status.transform.position);
-        transform.position = status.transform.position + direction * status.ComboCommonProximityRange;
+        Vector3 direction = playersAim.transform.position - status.transform.position;
+        if(direction.sqrMagnitude > Mathf.Pow(status.ComboCommonProximityRange, 2f))
+            direction = direction.normalized * status.ComboCommonProximityRange;
+        transform.position = status.transform.position + direction;
     }
 
 
