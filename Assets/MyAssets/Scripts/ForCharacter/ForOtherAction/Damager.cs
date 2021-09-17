@@ -15,6 +15,15 @@ public class Damager : MyMonoBehaviour
     /// </summary>
     Status status = default;
 
+
+    /// <summary>
+    /// 攻撃を受けた時のエフェクト:一般
+    /// </summary>
+    [SerializeField, Tooltip("攻撃を受けた時のパーティクルを乗せたオブジェクトを設定:一般")]
+    GameObject hitEffectNormal = default;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +55,14 @@ public class Damager : MyMonoBehaviour
 
             //HPを減らす(0を下回らないようにする)
             status.NowHP = (short)Mathf.Max(status.NowHP - (calculateDamage(subtraction) * attackInfo.powerRatio), 0.0f);
+
+            //攻撃が当たった時のエフェクトを、攻撃を受けたポイントに表示
+            if (hitEffectNormal) 
+            {
+                GameObject obj = Instantiate(hitEffectNormal);
+                obj.transform.position = other.ClosestPoint(other.transform.position);
+            }
+
         }
     }
 
