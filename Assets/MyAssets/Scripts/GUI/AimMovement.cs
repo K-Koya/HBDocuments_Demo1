@@ -25,6 +25,10 @@ public class AimMovement : MyMonoBehaviour
     /// プレイヤーステータス
     /// </summary>
     Status status = default;
+    /// <summary>
+    /// 照準を合わせている対象のステータス
+    /// </summary>
+    Status focusedStatus = default;
 
     /// <summary>
     /// 地面レイヤ
@@ -44,6 +48,7 @@ public class AimMovement : MyMonoBehaviour
     /* プロパティ */
     public float Distance { get => distance; }
     public DistanceType DistType { get => distanceType; }
+    public Status FocusedStatus { get => focusedStatus; }
 
 
 
@@ -71,6 +76,8 @@ public class AimMovement : MyMonoBehaviour
             //確認できたら該当座標を保存
             rayhitPos = rayhitGround.point;
 
+            //(所持していれば)対象のステータスコンポーネントを取得
+            focusedStatus = rayhitGround.transform.GetComponent<Status>();
             
             //照準位置までの実数距離から識別値を設定
             if (distance < status.ComboCommonProximityRange)

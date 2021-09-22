@@ -225,10 +225,20 @@ public class Status : MonoBehaviour
     [SerializeField]
     bool isCommandRunning = false;
     /// <summary>
-    /// ダメージを受けてひるんでいる状態か
+    /// ダメージを受けたか
     /// </summary>
     [SerializeField]
     bool isDamaging = false;
+    /// <summary>
+    /// ひるんでいる状態か
+    /// </summary>
+    [SerializeField]
+    bool isFlirting = false;
+    /// <summary>
+    /// HPが尽きて倒されたか
+    /// </summary>
+    [SerializeField]
+    bool isDefeated = false;
 
     /// <summary>
     /// 照準システム
@@ -274,11 +284,11 @@ public class Status : MonoBehaviour
     public bool IsJumping { get => isJumping; set => isJumping = value; }
     public bool IsCommandRunning { get => isCommandRunning; set => isCommandRunning = value; }
     public bool IsDamaging { get => isDamaging; set => isDamaging = value; }
+    public bool IsDefeated { get => isDefeated; set => isDefeated = value; }
+    public bool IsFlirting { get => isFlirting; set => isFlirting = value; }
     public float ResultSpeed { get => resultSpeed; set => resultSpeed = value; }
     public AimSystemForPlayer Aim { get => aim; set => aim = value; }
     
-
-
 
     /// <summary>
     /// 技能数値が500または1500の時の補助技能数値から、技能数値に対する補助技能数値を算出

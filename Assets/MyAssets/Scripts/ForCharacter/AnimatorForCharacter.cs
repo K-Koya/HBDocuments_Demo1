@@ -15,64 +15,59 @@ public class AnimatorForCharacter : MyMonoBehaviour
     /// <summary>
     /// animatorに渡すパラメーター名:Speed
     /// </summary>
-    static string animParamNameSpeed = "Speed";
+    static protected string animParamNameSpeed = "Speed";
     /// <summary>
     /// animatorに渡すパラメーター名:IsGrounded
     /// </summary>
-    static string animParamNameIsGrounded = "IsGrounded";
+    static protected string animParamNameIsGrounded = "IsGrounded";
     /// <summary>
     /// animatorに渡すパラメーター名:IsJumping
     /// </summary>
-    static string animParamNameIsJumping = "IsJumping";
+    static protected string animParamNameIsJumping = "IsJumping";
     /// <summary>
-    /// animatorに渡すパラメーター名:DoEyeBlink
+    /// animatorに渡すパラメーター名:isDamaged
     /// </summary>
-    static string animParamNameDoEyeBlink = "DoEyeBlink";
-
-
+    static protected string animParamNameIsDamaged = "IsDamaged";
+    /// <summary>
+    /// animatorに渡すパラメーター名:isDefeated
+    /// </summary>
+    static protected string animParamNameIsDefeated = "IsDefeated";
 
     /// <summary>
     /// キャラクターにアタッチされているAnimator
     /// </summary>
-    Animator animator = default;
+    protected Animator animator = default;
 
     /// <summary>
     /// キャラクターのステータス
     /// </summary>
-    Status status = default;
+    protected Status status = default;
+
+
 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         TimelineInit();
         animator = time.animator.component;
         status = GetComponent<Status>();
-
-        StartCoroutine(EyeBlink());
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (IsPausing) return;
 
         animator.SetFloat(animParamNameSpeed, status.ResultSpeed);
         animator.SetBool(animParamNameIsGrounded, status.IsGrounded);
         animator.SetBool(animParamNameIsJumping, status.IsJumping);
-    }
+        animator.SetBool(animParamNameIsDefeated, status.IsDefeated);
 
-    /// <summary>
-    /// 瞬きを一定間隔で要求
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator EyeBlink()
-    {
-        while (gameObject)
+        if (status.IsDamaging)
         {
-            //瞬きを制御する
-            if (Random.Range(0, 5) <= 1) animator.SetTrigger(animParamNameDoEyeBlink);
-            yield return time.WaitForSeconds(0.5f);
+            animator.SetTrigger(animParamNameIsDamaged);
+            status.IsDamaging = false;
         }
     }
 }

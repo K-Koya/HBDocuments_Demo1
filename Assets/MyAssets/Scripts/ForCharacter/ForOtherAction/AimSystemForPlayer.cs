@@ -6,7 +6,6 @@ using Chronos;
 /// <summary>
 /// 照準による動作コンポーネント
 /// </summary>
-[RequireComponent(typeof(Collider))]
 public class AimSystemForPlayer : AimSystem
 {
     /// <summary>

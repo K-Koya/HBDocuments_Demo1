@@ -37,7 +37,7 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     /// <summary>
     /// true:コマンドの追加入力を受け付けている
     /// </summary>
-    protected bool isAcceptable = default;
+    protected bool isAcceptable = false;
     /// <summary>
     /// true:コマンドのアクションが終了した
     /// </summary>
@@ -47,6 +47,11 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     /// 照準を合わせている対象
     /// </summary>
     protected Vector3 lookTarget = default;
+
+    /// <summary>
+    /// 実行中のコルーチン
+    /// </summary>
+    protected IEnumerator flow = default;
 
 
     /// <summary>
@@ -65,7 +70,22 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     public void Run()
     {
         //コマンドフロー用のコルーチンを開始
-        StartCoroutine(CommandFlow());
+        flow = CommandFlow();
+        StartCoroutine(flow);
+    }
+
+    /// <summary>
+    /// コマンドを中止させる
+    /// </summary>
+    public void Stop()
+    {
+        if (flow == null) return;
+
+        //コマンドフロー用のコルーチンを中止
+        StopCoroutine(flow);
+        flow = null;
+        isAcceptable = false;
+        isEndOfAction = true;
     }
 
 

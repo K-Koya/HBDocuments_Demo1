@@ -43,8 +43,9 @@ public class Damager : MyMonoBehaviour
         if ((other.CompareTag("Enemy") && (CompareTag("Player") || CompareTag("Party")))
             ||((other.CompareTag("Player") || other.CompareTag("Party")) && CompareTag("Enemy")))
         {
-            //攻撃してきた相手の照準情報を読み出し
+            //攻撃してきた相手の照準情報を読み出し(照準情報が読みだせなければ即抜ける)
             AimSystem enemysAim = other.GetComponent<AimSystem>();
+            if (!enemysAim) return;
             AttackInfo attackInfo = enemysAim.Info;
 
             //直接攻撃なら「敵のAttack - 自身のDefense」
@@ -63,6 +64,13 @@ public class Damager : MyMonoBehaviour
                 obj.transform.position = other.ClosestPoint(other.transform.position);
             }
 
+            //ダメージを受けた状態にする、HPが0になっていたら倒された状態にする
+            if (!status.IsDefeated)
+            {
+                status.IsDamaging = true;
+                if (status.NowHP <= 0) status.IsDefeated = true;
+                else status.IsFlirting = true;
+            }
         }
     }
 
@@ -81,5 +89,13 @@ public class Damager : MyMonoBehaviour
 
         //傾き、切片、能力値差よりベースのダメージ値を算出
         return (subtraction * tilt) + segment;
+    }
+
+    /// <summary>
+    /// animatorイベントより呼び出して、怯みが終了したことを伝える
+    /// </summary>
+    public void DamageEnd()
+    {
+        status.IsFlirting = false;
     }
 }

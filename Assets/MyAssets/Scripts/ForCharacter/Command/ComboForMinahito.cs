@@ -15,7 +15,7 @@ public class ComboForMinahito : ComboCommand
     {
         //対応するアニメーションを指定
         InitAttackInfosOrder();
-        animator.SetInteger(ANIM_PARAM_NAME_ACTION_NUMBER, 0);
+        animator.SetInteger(ANIM_PARAM_NAME_ACTION_NUMBER, animNumber);
         isEndOfAction = false;
         isAcceptable = false;
 
