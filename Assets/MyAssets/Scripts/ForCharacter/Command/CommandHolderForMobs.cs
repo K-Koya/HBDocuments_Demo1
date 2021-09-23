@@ -100,7 +100,7 @@ public class CommandHolderForMobs : MyMonoBehaviour
 
         //何かしらコマンドが出せる状況でなければ、即抜ける
         if (status.IsJumping) return;
-        if (status.IsDamaging || status.IsDefeated)
+        if (status.IsFlirting || status.IsDefeated)
         {
             if (running)
             {

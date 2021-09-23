@@ -59,6 +59,12 @@ public class AimDrawer : MyMonoBehaviour
     [SerializeField, Tooltip("近接攻撃範囲内の時に使用するシンボルカラー")]
     Color colorWithinProximity = default;
 
+    [Header("入力ナビゲーションオブジェクト")]
+    /// <summary>
+    /// コンボ攻撃入力ナビゲーション用オブジェクト
+    /// </summary>
+    [SerializeField, Tooltip("コンボ攻撃入力ナビゲーション用オブジェクト")]
+    GameObject comboAttackNav = default;
 
 
     // Start is called before the first frame update
@@ -84,6 +90,9 @@ public class AimDrawer : MyMonoBehaviour
                     distanceText.color = colorOutOfRange;
                     aimImage.sprite = aimSpriteOutOfRange;
                     aimImage.color = colorOutOfRange;
+
+                    //コンボ攻撃用コマンドを非表示
+                    comboAttackNav.SetActive(false);
                     break;
                 }
             case DistanceType.OutOfProximity:
@@ -91,6 +100,9 @@ public class AimDrawer : MyMonoBehaviour
                     distanceText.color = colorOutOfProximity;
                     aimImage.sprite = aimSpriteOutOfProximity;
                     aimImage.color = colorOutOfProximity;
+
+                    //コンボ攻撃用コマンドを非表示
+                    comboAttackNav.SetActive(false);
                     break;
                 }
             case DistanceType.WithinProximity:
@@ -98,9 +110,11 @@ public class AimDrawer : MyMonoBehaviour
                     distanceText.color = colorWithinProximity;
                     aimImage.sprite = aimSpriteWithinProximity;
                     aimImage.color = colorWithinProximity;
+
+                    //攻撃対象に照準があっていれば、コンボ攻撃用コマンドを表示
+                    comboAttackNav.SetActive(aimMovement.FocusedStatus);
                     break;
                 }
         }
-
     }
 }

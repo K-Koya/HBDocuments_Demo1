@@ -28,6 +28,10 @@ public class MoveForEnemy : MoveForAbstruct
     /// NavMeshAgent定義
     /// </summary>
     NavMeshAgent nav = default;
+    /// <summary>
+    /// キャラクターの向き
+    /// </summary>
+    Vector3 characterDirection = Vector3.zero;
 
     /// <summary>
     /// 行動方針
@@ -118,7 +122,11 @@ public class MoveForEnemy : MoveForAbstruct
     void NavMeshStop()
     {
         //コマンド実行中、怯み中、倒された時はNavMeshを停止させる
-        if(status.IsCommandRunning || status.IsFlirting || status.IsDefeated)
+        if (status.IsCommandRunning)
+        {
+            nav.isStopped = true;
+        }
+        else if (status.IsFlirting || status.IsDefeated)
         {
             nav.isStopped = true;
             nav.velocity = Vector3.zero;
@@ -248,8 +256,6 @@ public class MoveForEnemy : MoveForAbstruct
     /// </summary>
     void NavMeshMove()
     {
-        //キャラクターの向き
-        Vector3 characterDirection = Vector3.zero;
         switch (courseOfAction)
         {
             case CourseOfAction.Stop:
@@ -407,7 +413,14 @@ public class MoveForEnemy : MoveForAbstruct
                         {
                             if (!status.IsCommandRunning)
                             {
-                                if(Random.value > 0.4f)
+                                if (sqrDistance > Mathf.Pow(researchDestinationDistance, 2.0f))
+                                {
+                                    nav.isStopped = false;
+                                    courseOfAction = CourseOfAction.Chase;
+                                    stepOfAction = StepOfAction.GoTowards;
+                                    InitCourceOfAction();
+                                }
+                                else if (Random.value > 0.4f)
                                 {
                                     stepOfAction = StepOfAction.Attack;
                                     combo = PushType.onePush;
