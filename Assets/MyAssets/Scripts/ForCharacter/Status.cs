@@ -92,7 +92,7 @@ public class Status : MonoBehaviour
     /// <summary>
     /// 最大HP
     /// </summary>
-    [SerializeField, Range(500,2000), Tooltip("最大HP")]
+    [SerializeField, Range(500, 2000), Tooltip("最大HP")]
     short maxHP = 1000;
     /// <summary>
     /// 直接攻撃
@@ -288,7 +288,7 @@ public class Status : MonoBehaviour
     public bool IsFlirting { get => isFlirting; set => isFlirting = value; }
     public float ResultSpeed { get => resultSpeed; set => resultSpeed = value; }
     public AimSystemForPlayer Aim { get => aim; set => aim = value; }
-    
+
 
     /// <summary>
     /// 技能数値が500または1500の時の補助技能数値から、技能数値に対する補助技能数値を算出
@@ -349,7 +349,10 @@ public class Status : MonoBehaviour
 
     }
 
-    
+    void OnEnable()
+    {
+        resetFlags(false);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -358,9 +361,17 @@ public class Status : MonoBehaviour
         submitSubParameter();
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// 各種フラグメントを初期値に戻す
+    /// </summary>
+    /// <param name="isRespawn">復活させるか</param>
+    public void resetFlags(bool isRespawn)
     {
-        
+        isGrounded = false;
+        isJumping = false;
+        isCommandRunning = false;
+        isDamaging = false;
+        isFlirting = false;
+        if (isRespawn) isDefeated = false;
     }
 }

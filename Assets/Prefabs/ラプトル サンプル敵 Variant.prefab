@@ -223,7 +223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u30E9\u30D7\u30C8\u30EB \u30B5\u30F3\u30D7\u30EB"
+  m_Text: "\u30E9\u30D7\u30C8\u30EB"
 --- !u!114 &533021234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,7 +697,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 1.1
   m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!114 &3772881632081340829
 MonoBehaviour:
@@ -772,18 +772,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b022b35a04206164981805c40a608dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterNameEng: RaptorSample
-  characterNameJpn: "\u30E9\u30D7\u30C8\u30EB \u30B5\u30F3\u30D7\u30EB"
+  characterNameEng: Raptor
+  characterNameJpn: "\u30E9\u30D7\u30C8\u30EB"
   height: 1
   width: 1
   weight: 1
   eyePoint: {fileID: 0}
-  maxHP: 900
+  maxHP: 650
   attack: 1300
-  defense: 900
+  defense: 850
   magic: 500
   shield: 650
-  rapid: 1450
+  rapid: 1550
   technique: 650
   luck: 600
   nowHP: 1000
@@ -1058,7 +1058,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 6bcc76aebcc27f641a1ba39f7e8e5fe6,
         type: 3}
       propertyPath: m_Name
-      value: "\u30E9\u30D7\u30C8\u30EB \u30B5\u30F3\u30D7\u30EB\u6575"
+      value: "\u30E9\u30D7\u30C8\u30EB \u30B5\u30F3\u30D7\u30EB\u6575 Variant"
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 6bcc76aebcc27f641a1ba39f7e8e5fe6,
         type: 3}

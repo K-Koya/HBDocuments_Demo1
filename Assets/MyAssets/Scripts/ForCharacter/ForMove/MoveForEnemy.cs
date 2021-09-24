@@ -81,6 +81,8 @@ public class MoveForEnemy : MoveForAbstruct
     public PushType Combo { get => combo; set => combo = value; }
     public PushType Dodge { get => dodge; set => dodge = value; }
     public PushType[] Commands { get => commands; set => commands = value; }
+    public Transform FollowTarget { get => followTarget; set => followTarget = value; }
+    public Transform AttackTarget { get => attackTarget; set => attackTarget = value; }
 
 
 
@@ -216,7 +218,7 @@ public class MoveForEnemy : MoveForAbstruct
             case CourseOfAction.Wander:
                 {
                     //補助対象を中心にランダム位置を目的地に
-                    destination = followTarget.position + new Vector3(Random.Range(-5f, 5f), 0f, Random.Range(-5f, 5f));
+                    destination = followTarget.position + new Vector3(Random.Range(-15f, 15f), 0f, Random.Range(-15f, 15f));
                     //移動性能は自分の値で
                     nav.speed = status.MaxRunSpeed;
                     nav.acceleration = status.RunAcceleration;
@@ -320,7 +322,7 @@ public class MoveForEnemy : MoveForAbstruct
                     //目的地が未定義なら検索
                     float sqrDistance = Vector3.SqrMagnitude(destination.Value - transform.position);
                     if (stepOfAction == StepOfAction.Stay
-                        && Random.value < 0.002f)
+                        && Random.value < 0.02f)
                     {
                         nav.isStopped = false;
                         stepOfAction = StepOfAction.GoTowards;

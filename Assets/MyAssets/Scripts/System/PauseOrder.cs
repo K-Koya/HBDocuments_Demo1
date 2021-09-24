@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using Chronos;
 
 /// <summary>
-/// 
+/// ポーズ状態を制御するコンポーネント
 /// </summary>
 [RequireComponent(typeof(Timekeeper))]
 public class PauseOrder : MonoBehaviour
@@ -22,6 +22,12 @@ public class PauseOrder : MonoBehaviour
 
 
     /// <summary>
+    /// true:ゲーム終了
+    /// </summary>
+    bool isGameEnd = false;
+
+
+    /// <summary>
     /// ポーズ画面の際に停止させるグローバルクロックのkey
     /// </summary>
     [SerializeField]
@@ -33,6 +39,24 @@ public class PauseOrder : MonoBehaviour
     [SerializeField]
     UnityEvent pauseActivate = default;
 
+    /// <summary>
+    /// ポーズ中にポーズ・メニューボタンが押された時、ポーズメニューを閉じるメソッドを定義する
+    /// </summary>
+    [SerializeField]
+    UnityEvent pauseEnactivate = default;
+
+    /// <summary>
+    /// ゲームクリア時、クリアメニューを起動させるメソッドを定義する
+    /// </summary>
+    [SerializeField]
+    UnityEvent clearMenuActivate = default;
+
+    /// <summary>
+    /// ゲームオーバー時、ゲームオーバーメニューを起動させるメソッドを定義する
+    /// </summary>
+    [SerializeField]
+    UnityEvent notClearMenuActivate = default;
+
 
     void Start()
     {
@@ -42,8 +66,30 @@ public class PauseOrder : MonoBehaviour
 
     void Update()
     {
-        //ポーズ実行・ポーズ画面起動
-        if (input.Menu.NowPushDown == PushType.onePush) pauseActivate.Invoke();
+        if (isGameEnd) return;
+
+        //ゲームオーバー
+        if(GameManager.IsNotCleared)
+        {
+            //ゲームオーバーメニュー起動
+            notClearMenuActivate.Invoke();
+            isGameEnd = true;
+        }
+        //ゲームクリア
+        else if(GameManager.IsCleared)
+        {
+            //ゲームクリアメニュー起動
+            clearMenuActivate.Invoke();
+            isGameEnd = true;
+        }
+        //ポーズ処理
+        else if (input.Menu.NowPushDown == PushType.onePush)
+        {
+            //ポーズ解除・ポーズ画面終了
+            if (tk.Clock(clockKeyPausable).paused) pauseEnactivate.Invoke();
+            //ポーズ実行・ポーズ画面起動
+            else pauseActivate.Invoke();
+        }
     }
 
     /// <summary>
