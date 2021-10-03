@@ -8,7 +8,6 @@ public class CommandDodge : CommandAbstruct
     void Start()
     {
         TimelineInit();
-        Init();
     }
 
     /// <summary>

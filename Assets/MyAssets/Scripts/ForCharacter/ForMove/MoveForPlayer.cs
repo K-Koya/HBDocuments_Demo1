@@ -78,7 +78,8 @@ public class MoveForPlayer : MoveForAbstruct
         //プレイヤーの移動入力を取得
         float horizontal = input.Move.Axis2d.x;
         float vartical = input.Move.Axis2d.y;
-        if (status.IsCommandRunning || status.IsDamaging)
+        //ただし、行動できる状態に限る
+        if (status.IsCommandRunning || status.IsFlirting || status.IsDefeated)
         {
             horizontal = 0.0f;
             vartical = 0.0f;
@@ -181,8 +182,9 @@ public class MoveForPlayer : MoveForAbstruct
         //きつい坂ではない地面についているか
         if (status.IsGrounded)
         {
-            //ジャンプキーが押されたか
-            if (input.Jump.NowPushDown == PushType.onePush)
+            //怯み中ややられ状態でなくジャンプキーが押されたか
+            if ((!status.IsFlirting && !status.IsDefeated)
+                && input.Jump.NowPushDown == PushType.onePush)
             {
                 //ジャンプ上昇フラグを立てる
                 status.IsJumping = true;

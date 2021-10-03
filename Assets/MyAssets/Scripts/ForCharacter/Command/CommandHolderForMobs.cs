@@ -20,6 +20,11 @@ public class CommandHolderForMobs : MyMonoBehaviour
     protected Status status = default;
 
     /// <summary>
+    /// キャラクター向けのアニメーター
+    /// </summary>
+    protected Animator characterAnimator = default;
+
+    /// <summary>
     /// モブの場合の入力コンポーネント
     /// </summary>
     MoveForEnemy ai = default;
@@ -33,7 +38,6 @@ public class CommandHolderForMobs : MyMonoBehaviour
     /// <summary>
     /// 実行中のコマンド
     /// </summary>
-    [SerializeField]
     protected CommandAbstruct running = default;
 
     /// <summary>
@@ -64,11 +68,15 @@ public class CommandHolderForMobs : MyMonoBehaviour
         status = GetComponent<Status>();
         ai = GetComponent<MoveForEnemy>();
         aim = GetComponentInChildren<AimSystem>();
+        characterAnimator = GetComponent<Animator>();
 
         //子オブジェクトからコマンドコンポーネントを取得し、種類によって分配する
         CommandAbstruct[] commands = GetComponentsInChildren<CommandAbstruct>();
         foreach (CommandAbstruct command in commands)
         {
+            //アニメーターのパスを提供
+            command.Animator = characterAnimator;
+
             switch (command.CommandType)
             {
                 case CommandType.Attack:

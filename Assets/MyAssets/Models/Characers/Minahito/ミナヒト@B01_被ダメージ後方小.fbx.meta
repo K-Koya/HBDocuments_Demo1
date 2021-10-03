@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 0fc1f0ba469318147bc0bc1adb18bfa9
+guid: 1e547bfbcfc2b6e4caabc3024491ae02
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: -3440069394886952471
-    second: "C00_\u97AD\u629C\u5200\u76F4\u7ACB"
+      74: -3846985047047074088
+    second: "B01_\u88AB\u30C0\u30E1\u30FC\u30B8\u5F8C\u65B9\u5C0F"
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: "C00_\u97AD\u629C\u5200\u76F4\u7ACB"
-      takeName: "C00_\u97AD\u629C\u5200\u76F4\u7ACB"
+      name: "B01_\u88AB\u30C0\u30E1\u30FC\u30B8\u5F8C\u65B9\u5C0F"
+      takeName: "B01_\u88AB\u30C0\u30E1\u30FC\u30B8\u5F8C\u65B9\u5C0F"
       internalID: 0
       firstFrame: -1
-      lastFrame: 119
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -51,14 +51,21 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.9190476
+        functionName: DamageEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

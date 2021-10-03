@@ -28,11 +28,6 @@ public class HPMeterController : MyMonoBehaviour
     /// </summary>
     float beforeHPRatio = 0.0f;
 
-    /// <summary>
-    /// true:余白表示部分を実数部分に追いつかせる
-    /// </summary>
-    [SerializeField]
-    bool doBlankHP = false;
 
 
 
@@ -57,6 +52,8 @@ public class HPMeterController : MyMonoBehaviour
     {
         short maxHp = status.MaxHP;
         short nowHp = status.NowHP;
+        //怯み中はBlank部分を表示する
+        bool doBlankHP = !status.IsFlirting;
 
         //HPの割合値を計算
         float hpRatio = nowHp / (float)maxHp;

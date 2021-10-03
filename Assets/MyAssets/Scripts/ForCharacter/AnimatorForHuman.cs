@@ -13,7 +13,7 @@ public class AnimatorForHuman : AnimatorForCharacter
     /// <summary>
     /// animatorに渡すパラメーター名:DoEyeBlink
     /// </summary>
-    static string animParamNameDoEyeBlink = "DoEyeBlink";
+    protected static string animParamNameDoEyeBlink = "DoEyeBlink";
 
 
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class AnimatorForHuman : AnimatorForCharacter
     /// 瞬きを一定間隔で要求
     /// </summary>
     /// <returns></returns>
-    IEnumerator EyeBlink()
+    protected IEnumerator EyeBlink()
     {
         while (gameObject)
         {

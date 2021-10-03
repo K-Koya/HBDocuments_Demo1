@@ -29,6 +29,10 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     /// キャラクターのアニメーター
     /// </summary>
     protected Animator animator = default;
+    /// <summary>
+    /// キャラクターのアクセサリーのアニメーター
+    /// </summary>
+    protected List<Animator> accessoriesAnimators = new List<Animator>();
 
     /// <summary>
     /// コマンド追加入力受付
@@ -53,14 +57,6 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     /// </summary>
     protected IEnumerator flow = default;
 
-
-    /// <summary>
-    /// 初期化
-    /// </summary>
-    protected void Init()
-    {
-        animator = GetComponentInParent<Animator>();
-    }
 
 
     /// <summary>
@@ -88,7 +84,29 @@ public abstract class CommandAbstruct : MyMonoBehaviour
         isEndOfAction = true;
     }
 
-
+    /// <summary>
+    /// アクセサリー用アニメーターのパラメータを一括設定
+    /// </summary>
+    /// <param name="name">int型のパラメーター名</param>
+    /// <param name="value"></param>
+    protected void SetAccessoriesAnimatorsParam(string name, int value)
+    {
+        foreach(Animator anim in accessoriesAnimators)
+        {
+            anim.SetInteger(name, value);
+        }
+    }
+    /// <summary>
+    /// アクセサリー用アニメーターのパラメータを一括設定
+    /// </summary>
+    /// <param name="name">トリガーのパラメータ名</param>
+    protected void SetAccessoriesAnimatorsParam(string name)
+    {
+        foreach (Animator anim in accessoriesAnimators)
+        {
+            anim.SetTrigger(name);
+        }
+    }
 
     /// <summary>
     /// コマンドを流れに沿って実行
@@ -118,6 +136,8 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     public bool IsEndOfAction { get => isEndOfAction; set => isEndOfAction = value; }
     public bool IsAcceptable { get => isAcceptable; set => isAcceptable = value; }
     public Vector3 LookTarget { get => lookTarget; set => lookTarget = value; }
+    public Animator Animator { set => animator = value; }
+    public List<Animator> AccessoriesAnimators { get => accessoriesAnimators; }
 }
 
 /// <summary>

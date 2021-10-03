@@ -33,6 +33,5 @@ public class ComboForRaptor : ComboCommand
     void Start()
     {
         TimelineInit();
-        Init();
     }
 }
