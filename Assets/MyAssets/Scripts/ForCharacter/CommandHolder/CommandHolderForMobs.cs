@@ -81,7 +81,7 @@ public class CommandHolderForMobs : MyMonoBehaviour
             {
                 case CommandType.Attack:
                 case CommandType.Support:
-                case CommandType.Item:
+                case CommandType.Heal:
                     {
                         commandList.Add(command);
                         break;

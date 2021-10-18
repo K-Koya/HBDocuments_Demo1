@@ -26,6 +26,10 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     protected byte animNumber = 0;
 
     /// <summary>
+    /// キャラクターのステータス
+    /// </summary>
+    protected Status characterStatus = default;
+    /// <summary>
     /// キャラクターのアニメーター
     /// </summary>
     protected Animator animator = default;
@@ -136,6 +140,7 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     public bool IsEndOfAction { get => isEndOfAction; set => isEndOfAction = value; }
     public bool IsAcceptable { get => isAcceptable; set => isAcceptable = value; }
     public Vector3 LookTarget { get => lookTarget; set => lookTarget = value; }
+    protected Status CharacterStatus { set => characterStatus = value; }
     public Animator Animator { set => animator = value; }
     public List<Animator> AccessoriesAnimators { get => accessoriesAnimators; }
 }
@@ -174,13 +179,11 @@ public abstract class AttackCommand : CommandAbstruct
     public override AttackInfo Info { get => attackInfos[attackInfosOrder++]; }
 }
 
-
 /// <summary>
 /// 通常コンボ攻撃基底クラス
 /// </summary>
 public abstract class ComboCommand : AttackCommand
 {
-
     /// <summary>
     /// コマンド種別を取得
     /// </summary>
@@ -246,7 +249,7 @@ public enum CommandType : byte
     /// </summary>
     Support,
     /// <summary>
-    /// アイテムコマンド
+    /// 回復コマンド
     /// </summary>
-    Item
+    Heal
 }
