@@ -16,7 +16,7 @@ public class ComboForMinahito : ComboCommand
         //対応するアニメーションを指定
         InitAttackInfosOrder();
         animator.SetInteger(ANIM_PARAM_NAME_ACTION_NUMBER, animNumber);
-        SetAccessoriesAnimatorsParam(ANIM_PARAM_NAME_ACTION_NUMBER, animNumber);
+        accessoriesAnimators.ForEach(aa => aa.SetInteger(ANIM_PARAM_NAME_ACTION_NUMBER, animNumber));
         isEndOfAction = false;
         isAcceptable = false;
 
@@ -24,7 +24,7 @@ public class ComboForMinahito : ComboCommand
         /* コンボ1段目 */
         //アニメーションを開始
         animator.SetTrigger(ANIM_PARAM_NAME_DO_NEXT_ACTION);
-        SetAccessoriesAnimatorsParam(ANIM_PARAM_NAME_DO_NEXT_ACTION);
+        accessoriesAnimators.ForEach(aa => aa.SetTrigger(ANIM_PARAM_NAME_DO_NEXT_ACTION));
         animator.transform.LookAt(lookTarget.YEqual(transform.position.y));
         //アクション終了まで待つ
         while (!isAcceptable) yield return null;
@@ -49,7 +49,7 @@ public class ComboForMinahito : ComboCommand
         isAcceptable = false;
         //アニメーションを開始
         animator.SetTrigger(ANIM_PARAM_NAME_DO_NEXT_ACTION);
-        SetAccessoriesAnimatorsParam(ANIM_PARAM_NAME_DO_NEXT_ACTION);
+        accessoriesAnimators.ForEach(aa => aa.SetTrigger(ANIM_PARAM_NAME_DO_NEXT_ACTION));
         animator.transform.LookAt(lookTarget.YEqual(transform.position.y));
         //アクション終了まで待つ
         while (!isAcceptable) yield return null;
@@ -74,7 +74,7 @@ public class ComboForMinahito : ComboCommand
         isAcceptable = false;
         //アニメーションを開始
         animator.SetTrigger(ANIM_PARAM_NAME_DO_NEXT_ACTION);
-        SetAccessoriesAnimatorsParam(ANIM_PARAM_NAME_DO_NEXT_ACTION);
+        accessoriesAnimators.ForEach(aa => aa.SetTrigger(ANIM_PARAM_NAME_DO_NEXT_ACTION));
         animator.transform.LookAt(lookTarget.YEqual(transform.position.y));
         //アクション終了まで待つ
         while (!isAcceptable) yield return null;

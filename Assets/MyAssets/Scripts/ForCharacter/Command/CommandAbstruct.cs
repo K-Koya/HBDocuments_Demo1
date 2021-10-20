@@ -89,30 +89,6 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     }
 
     /// <summary>
-    /// アクセサリー用アニメーターのパラメータを一括設定
-    /// </summary>
-    /// <param name="name">int型のパラメーター名</param>
-    /// <param name="value"></param>
-    protected void SetAccessoriesAnimatorsParam(string name, int value)
-    {
-        foreach(Animator anim in accessoriesAnimators)
-        {
-            anim.SetInteger(name, value);
-        }
-    }
-    /// <summary>
-    /// アクセサリー用アニメーターのパラメータを一括設定
-    /// </summary>
-    /// <param name="name">トリガーのパラメータ名</param>
-    protected void SetAccessoriesAnimatorsParam(string name)
-    {
-        foreach (Animator anim in accessoriesAnimators)
-        {
-            anim.SetTrigger(name);
-        }
-    }
-
-    /// <summary>
     /// コマンドを流れに沿って実行
     /// </summary>
     protected abstract IEnumerator CommandFlow();
@@ -142,7 +118,7 @@ public abstract class CommandAbstruct : MyMonoBehaviour
     public Vector3 LookTarget { get => lookTarget; set => lookTarget = value; }
     protected Status CharacterStatus { set => characterStatus = value; }
     public Animator Animator { set => animator = value; }
-    public List<Animator> AccessoriesAnimators { get => accessoriesAnimators; }
+    public List<Animator> AccessoriesAnimators { set => accessoriesAnimators = value; }
 }
 
 /// <summary>

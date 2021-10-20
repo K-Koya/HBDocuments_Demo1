@@ -25,6 +25,12 @@ public class CommandHolderForMobs : MyMonoBehaviour
     protected Animator characterAnimator = default;
 
     /// <summary>
+    /// キャラクターが持っているアクセサリーのアニメーター
+    /// </summary>
+    [SerializeField, Tooltip("キャラクターが持っているアクセサリーのアニメーターを各種アタッチ")]
+    protected List<Animator> accessoriesAnimators = new List<Animator>();
+
+    /// <summary>
     /// モブの場合の入力コンポーネント
     /// </summary>
     MoveForEnemy ai = default;
@@ -76,6 +82,7 @@ public class CommandHolderForMobs : MyMonoBehaviour
         {
             //アニメーターのパスを提供
             command.Animator = characterAnimator;
+            command.AccessoriesAnimators = accessoriesAnimators;
 
             switch (command.CommandType)
             {

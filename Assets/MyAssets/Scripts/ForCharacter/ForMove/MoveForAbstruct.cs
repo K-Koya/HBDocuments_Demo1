@@ -159,6 +159,18 @@ public abstract class MoveForAbstruct : MyMonoBehaviour
     /// </summary>
     protected bool isHitCollider = false;
 
+    /// <summary>
+    /// 水平移動力
+    /// Updateで計算してFixUpdateでAddForceする
+    /// </summary>
+    protected Vector3 moveDirectionHorizontal = Vector3.zero;
+
+    /// <summary>
+    /// 鉛直移動力
+    /// Updateで計算してFixUpdateでAddForceする
+    /// </summary>
+    protected Vector3 moveDirectionVertical = Vector3.zero;
+
 
     /// <summary>
     /// キャラクターを指定スピード分向きを変えさせる

@@ -6,7 +6,7 @@ using Chronos;
 /// <summary>
 /// プレイヤーキャラクターのうちミナヒトが対象、子オブジェクトにあるコマンドをまとめ、使用する
 /// </summary>
-public class CommandHolderForMinahitoPlayer : CommandHolderForMinahito
+public class CommandHolderForPlayer : CommandHolderForMobs
 {
     /// <summary>
     /// 入力情報を持つコンポーネント
@@ -23,41 +23,7 @@ public class CommandHolderForMinahitoPlayer : CommandHolderForMinahito
     protected override void Start()
     {
         input = FindObjectOfType<MyInputManager>();
-        TimelineInit();
-        status = GetComponent<Status>();
-        characterAnimator = GetComponent<Animator>();
-        aim = GetComponentInChildren<AimSystem>();
-
-        //子オブジェクトからコマンドコンポーネントを取得し、種類によって分配する
-        CommandAbstruct[] commands = GetComponentsInChildren<CommandAbstruct>();
-        foreach (CommandAbstruct command in commands)
-        {
-            //各アニメーターのパスを提供
-            command.Animator = characterAnimator;
-            command.AccessoriesAnimators.Add(whipAnimator);
-
-            switch (command.CommandType)
-            {
-                case CommandType.Attack:
-                case CommandType.Support:
-                case CommandType.Heal:
-                    {
-                        commandList.Add(command);
-                        break;
-                    }
-                case CommandType.Combo:
-                    {
-                        combo = (ComboCommand)command;
-                        break;
-                    }
-                case CommandType.Slide:
-                    {
-                        dodge = command;
-                        break;
-                    }
-                default: break;
-            }
-        }
+        base.Start();
     }
 
     // Update is called once per frame

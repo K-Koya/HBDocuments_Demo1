@@ -14,6 +14,11 @@ public class MoveForPlayer : MoveForAbstruct
     MyInputManager input = default;
 
     /// <summary>
+    /// 移動入力のうち、カメラの向きを正面とした二次元座標を保管
+    /// </summary>
+    Vector3 inputHorizontalDirection = Vector3.zero;
+
+    /// <summary>
     /// プレイヤーが操作できるカメラ
     /// </summary>
     GameObject playerCamera = default;
@@ -23,10 +28,6 @@ public class MoveForPlayer : MoveForAbstruct
     [SerializeField]
     string playerCameraTag = "MainCamera";
     
-    /// <summary>
-    /// 入力移動方向ベクトル
-    /// </summary>
-    Vector3 moveDirectionHorizontal = Vector3.zero;
     
 
     
@@ -56,7 +57,13 @@ public class MoveForPlayer : MoveForAbstruct
         ResultSpeedCheck();
     }
 
-    
+    void FixedUpdate()
+    {
+        rb.AddForce(moveDirectionHorizontal, ForceMode.Acceleration);
+        rb.AddForce(moveDirectionVertical, ForceMode.Acceleration);
+    }
+
+
 
     /// <summary>
     /// 水平移動処理
@@ -86,12 +93,12 @@ public class MoveForPlayer : MoveForAbstruct
         }
 
         //プレーヤーを移動させることができる状態なら、移動させたい度合・方向を取得
-        moveDirectionHorizontal = Vector3.Normalize(horizontal * right + vartical * forward);
+        inputHorizontalDirection = Vector3.Normalize(horizontal * right + vartical * forward);
 
 
 
         //プレーヤーを移動させたい度合・方向が入力されていれば、移動方向および速度を計算
-        if (moveDirectionHorizontal.sqrMagnitude > 0.0f)
+        if (inputHorizontalDirection.sqrMagnitude > 0.0f)
         {
             //移動方向は、空中にいれば向きに関係なく、地上ならキャラクターの向きへ
             //旋回速度は、5[m/s]以下か走行速度か、空中にいるかで決定
@@ -107,7 +114,7 @@ public class MoveForPlayer : MoveForAbstruct
 
 
             //プレイヤーを向けたい方向に体を向ける
-            CharacterRotation(moveDirectionHorizontal, rotate);
+            CharacterRotation(inputHorizontalDirection, rotate);
 
 
             //速度値が最高速度以下なら加速度を設定、以上なら0
@@ -115,7 +122,7 @@ public class MoveForPlayer : MoveForAbstruct
             //まず歩行判定と処理
             if(input.Move.NowPushType != PushType.doublePush)
             {
-                sqrMaxSpeed = Mathf.Pow(status.MaxRunSpeed, 2.0f) * moveDirectionHorizontal.sqrMagnitude;
+                sqrMaxSpeed = Mathf.Pow(status.MaxRunSpeed, 2.0f) * inputHorizontalDirection.sqrMagnitude;
             }
             //現速度と比較
             if (Mathf.Pow(status.ResultSpeed, 2.0f) < sqrMaxSpeed)
@@ -126,7 +133,7 @@ public class MoveForPlayer : MoveForAbstruct
                 }
                 else
                 {
-                    accelarateForRb = moveDirectionHorizontal.normalized * status.RunAcceleration;
+                    accelarateForRb = inputHorizontalDirection.normalized * status.RunAcceleration;
                 }
             }
             else
@@ -160,7 +167,7 @@ public class MoveForPlayer : MoveForAbstruct
         }
 
         //加速度を設定
-        rb.AddForce(accelarateForRb * time.deltaTime / time.fixedDeltaTime, ForceMode.Acceleration);
+        moveDirectionHorizontal = accelarateForRb;
     }
 
     /// <summary>
@@ -172,9 +179,9 @@ public class MoveForPlayer : MoveForAbstruct
         if (rb.velocity.y > FALLING_MAX_SPEED)
         {
             //重力をかける
-            if (!status.IsGrounded || moveDirectionHorizontal.sqrMagnitude > 0.0f)
+            if (!status.IsGrounded || inputHorizontalDirection.sqrMagnitude > 0.0f)
             {
-                rb.AddForce(status.GravitySize * time.deltaTime / time.fixedDeltaTime, ForceMode.Acceleration);
+                moveDirectionVertical = status.GravitySize;
             }
         }
 
