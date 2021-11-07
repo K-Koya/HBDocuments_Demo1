@@ -93,7 +93,7 @@ public class MoveForPlayer : MoveForAbstruct
         }
 
         //プレーヤーを移動させることができる状態なら、移動させたい度合・方向を取得
-        inputHorizontalDirection = Vector3.Normalize(horizontal * right + vartical * forward);
+        inputHorizontalDirection = horizontal * right + vartical * forward;
 
 
 
@@ -179,14 +179,22 @@ public class MoveForPlayer : MoveForAbstruct
         if (rb.velocity.y > FALLING_MAX_SPEED)
         {
             //重力をかける
-            if (!status.IsGrounded || inputHorizontalDirection.sqrMagnitude > 0.0f)
+            if (!status.IsGrounded)
             {
                 moveDirectionVertical = status.GravitySize;
+            }
+            else if(inputHorizontalDirection.sqrMagnitude > 0.0f)
+            {
+                moveDirectionVertical = status.GravitySize;
+            }
+            else
+            {
+                moveDirectionVertical.YEqual();
             }
         }
 
 
-        //きつい坂ではない地面についているか
+        //地面についているか
         if (status.IsGrounded)
         {
             //怯み中ややられ状態でなくジャンプキーが押されたか
