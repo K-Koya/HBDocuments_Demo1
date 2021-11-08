@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Chronos;
+using DG.Tweening;
 
 public class HPMeterController : MyMonoBehaviour 
 {
@@ -36,6 +36,7 @@ public class HPMeterController : MyMonoBehaviour
     {
         TimelineInit();
         status = GameObject.FindGameObjectWithTag("Player").GetComponent<Status>();
+        beforeHPRatio = 1.0f;
     }
 	
 	// Update is called once per frame
@@ -72,16 +73,6 @@ public class HPMeterController : MyMonoBehaviour
         hpMeterNowImg.color = Color.HSVToRGB(hue, 1.0f, val);
 
         //HPの余白表示が表示されている状態で、余白部分を減らすフラグが立っていれば減少処理
-        if (beforeHPRatio > hpRatio)
-        {
-            if (doBlankHP) beforeHPRatio = Mathf.Clamp(beforeHPRatio - time.deltaTime, hpRatio, maxHp);
-        }
-        else
-        {
-            beforeHPRatio = hpRatio;
-        }
-
-        //余白部分を設定
-        hpMeterBlankImg.fillAmount = beforeHPRatio;
+        if (beforeHPRatio > hpRatio && doBlankHP) hpMeterBlankImg.DOFillAmount(hpRatio, 0.8f).OnComplete(() => beforeHPRatio = hpRatio);
     }
 }
