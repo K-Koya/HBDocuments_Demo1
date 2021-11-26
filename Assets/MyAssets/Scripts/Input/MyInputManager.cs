@@ -42,6 +42,11 @@ public class MyInputManager : MonoBehaviour
     [SerializeField]
     string buttonNameCombo = "Combo";
     /// <summary>
+    /// Inputmanager上の、ガードに当たるボタン名
+    /// </summary>
+    [SerializeField]
+    string buttonNameGuard = "Guard";
+    /// <summary>
     /// Inputmanager上の、決定に当たるボタン名
     /// </summary>
     [SerializeField]
@@ -123,6 +128,10 @@ public class MyInputManager : MonoBehaviour
     /// </summary>
     InputKind combo = new InputKind();
     /// <summary>
+    /// 入力:ガード
+    /// </summary>
+    InputKind guard = new InputKind();
+    /// <summary>
     /// 入力:決定
     /// </summary>
     InputKind submit = new InputKind();
@@ -198,6 +207,7 @@ public class MyInputManager : MonoBehaviour
     /* プロパティ */
     public InputKind Jump { get => jump; }
     public InputKind Combo { get => combo; }
+    public InputKind Guard { get => guard; }
     public InputKind Submit { get => submit; }
     public InputKind Cancel { get => cancel; }
     public InputKind Menu { get => menu; }
@@ -207,6 +217,7 @@ public class MyInputManager : MonoBehaviour
     public InputKind Move { get => move; }
     public InputKind CameraSwing { get => cameraSwing; }
     
+
 
 
     //public bool IsUseVirtualInput { get => isUseVirtualInput; }
@@ -219,6 +230,7 @@ public class MyInputManager : MonoBehaviour
     {
         jump.Inputs.Add(new KeyClickButtonInput(buttonNameJump));
         combo.Inputs.Add(new KeyClickButtonInput(buttonNameCombo));
+        guard.Inputs.Add(new KeyClickButtonInput(buttonNameGuard));
         //jump.Inputs.Add(new VirtualButtonInput(virtualButtonJump));
         submit.Inputs.Add(new KeyClickButtonInput(buttonNameSubmit));
         cancel.Inputs.Add(new KeyClickButtonInput(buttonNameCancel));
@@ -250,6 +262,7 @@ public class MyInputManager : MonoBehaviour
 
         jump.management();
         combo.management();
+        guard.management();
         submit.management();
         cancel.management();
         menu.management();

@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - GUI3DAim
   - AttackArea
+  - NavJumpPoint
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Character
   - Player
   - Aim
-  - 
+  - Item
   - 
   - 
   - 

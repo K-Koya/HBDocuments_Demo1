@@ -31,10 +31,15 @@ public class AimMovement : MyMonoBehaviour
     Status focusedStatus = default;
 
     /// <summary>
-    /// 地面レイヤ
+    /// コマンド名
     /// </summary>
-    [SerializeField]
-    LayerMask groundLayer = default;
+    string commandName = "";
+
+    /// <summary>
+    /// 照準器が把握できるレイヤ
+    /// </summary>
+    [SerializeField, Tooltip("照準を合わせられるオブジェクトのレイヤーを指定する")]
+    LayerMask aimHitLayer = default;
 
     /// <summary>
     /// 照準までの距離の実数値
@@ -49,6 +54,8 @@ public class AimMovement : MyMonoBehaviour
     public float Distance { get => distance; }
     public DistanceType DistType { get => distanceType; }
     public Status FocusedStatus { get => focusedStatus; }
+    public Status Status { get => status; }
+    public string CommandName { get => commandName; set => commandName = value; }
 
 
 
@@ -71,7 +78,7 @@ public class AimMovement : MyMonoBehaviour
         Vector3 rayhitPos = Vector3.zero;
 
         //プレイヤー位置からカメラ前方方向に地面を探索
-        if (Physics.Raycast(status.EyePoint.transform.position, mainCamera.transform.forward, out rayhitGround, status.LockMaxRange, groundLayer))
+        if (Physics.Raycast(status.EyePoint.transform.position, mainCamera.transform.forward, out rayhitGround, status.LockMaxRange, aimHitLayer))
         {
             //確認できたら該当座標を保存
             rayhitPos = rayhitGround.point;

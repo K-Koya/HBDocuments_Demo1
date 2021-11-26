@@ -179,25 +179,22 @@ public abstract class ComboCommand : AttackCommand
 [System.Serializable]
 public struct AttackInfo
 {
-    /// <summary>
-    /// true:Magic値による攻撃である
-    /// false:Attack値による攻撃である
-    /// </summary>
     [Tooltip("true:Magic値による攻撃である\nfalse:Attack値による攻撃である")]
     public bool isAttackingByMagic;
 
-    /// <summary>
-    /// 技の威力補正
-    /// </summary>
     [Tooltip("技の威力補正")]
     public float powerRatio;
 
-    /// <summary>
-    /// 技が当たった際の吹き飛び量の基準
-    /// </summary>
     [Tooltip("技が当たった際の吹き飛び量の基準")]
     public Vector3 impact;
+
+    [Tooltip("攻撃範囲になるエリアの中心位置\n照準位置からのオフセット")]
+    public Vector3 areaCenterOffset;
+
+    [Tooltip("攻撃範囲になるエリアの半径")]
+    public float radius;
 }
+
 
 /// <summary>
 /// コマンド種別

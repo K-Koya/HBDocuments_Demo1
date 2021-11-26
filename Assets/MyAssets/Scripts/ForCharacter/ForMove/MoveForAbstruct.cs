@@ -100,7 +100,7 @@ public abstract class MoveForAbstruct : MyMonoBehaviour
     /// <summary>
     /// 最小移動速度
     /// </summary>
-    public const float MIN_MOVE_DISTANCE = 0.1f;
+    public const float MIN_MOVE_DISTANCE = 0.5f;
     /// <summary>
     /// 落下最高速[m/s]
     /// </summary>
@@ -154,10 +154,7 @@ public abstract class MoveForAbstruct : MyMonoBehaviour
     /// 接地判定のための、足元のトリガーコライダーの地面との接触判定
     /// </summary>
     protected bool isHitFootCollider = false;
-    /// <summary>
-    /// 接地判定のための、当たり判定コライダーと地面との接触判定
-    /// </summary>
-    protected bool isHitCollider = false;
+    
 
     /// <summary>
     /// 水平移動力
@@ -189,50 +186,36 @@ public abstract class MoveForAbstruct : MyMonoBehaviour
     }
 
 
-    /// <summary>
-    /// 接地判定処理
-    /// </summary>
-    protected void GroundedCheck()
-    {
-        status.IsGrounded = (isHitFootCollider && isHitCollider);
-    }
 
     /// <summary>
-    /// 当たり判定コライダーに接触
+    /// 接地判定処理抽象メソッド
     /// </summary>
-    /// <param name="collision"></param>
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == layerNumberOfGround)
-        {
-            if (isHitFootCollider) isHitCollider = true;
-        }
-    }
+    abstract protected void GroundedCheck();
+
     /// <summary>
-    /// 当たり判定コライダーから離脱
+    /// ナビメッシュ利用キャラ向けジャンプ処理
     /// </summary>
-    /// <param name="collision"></param>
-    private void OnCollisionExit(Collision collision)
+    /// <param name="from">移動元座標</param>
+    /// <param name="to">移動先座標</param>
+    /// <param name="maxHeight">最大高度</param>
+    protected void NavJumpOrder(Vector3 from, Vector3 to, float maxHeight)
     {
-        if (collision.gameObject.layer == layerNumberOfGround)
-        {
-            if (!isHitFootCollider) isHitCollider = false;
-        }
+
     }
 
     /// <summary>
     /// 接地判定用の足元コライダーに接触中トリガー
     /// </summary>
     /// <param name="other"></param>
-    void OnTriggerStay(Collider other)
+    protected void OnTriggerStay(Collider other)
     {
-        if (!isHitFootCollider && other.gameObject.layer == layerNumberOfGround) isHitFootCollider = true;
+        if (other.gameObject.layer == layerNumberOfGround) isHitFootCollider = true;
     }
     /// <summary>
     /// 接地判定用の足元コライダーから離脱トリガー
     /// </summary>
     /// <param name="other"></param>
-    void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == layerNumberOfGround) isHitFootCollider = false;
     }

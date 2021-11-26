@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Chronos;
 
 /// <summary>
 /// 照準による動作コンポーネント
@@ -12,15 +11,18 @@ public class AimSystemForPlayer : AimSystem
     /// プレイヤー向けの照準位置
     /// </summary>
     AimMovement playersAim = default;
-    
+
+    /// <summary>
+    /// 入力情報を持つコンポーネント
+    /// </summary>
+    MyInputManager input = default;
 
     void Start()
     {
         TimelineInit();
         area = GetComponent<Collider>();
-        area.enabled = false;
         playersAim = FindObjectOfType<AimMovement>();
-        status = GetComponentInParent<Status>();
+        input = FindObjectOfType<MyInputManager>();
         hitableAttackLayer = (byte)LayerMask.NameToLayer(hitableAttackLayerName);
         searchableItemLayer = (byte)LayerMask.NameToLayer(searchableItemLayerName);
     }
@@ -28,31 +30,18 @@ public class AimSystemForPlayer : AimSystem
     void Update()
     {
         if (IsPausing) return;
+        Status status = playersAim.Status;
         Vector3 direction = playersAim.transform.position - status.transform.position;
         if(direction.sqrMagnitude > Mathf.Pow(status.ComboCommonProximityRange, 2f))
             direction = direction.normalized * status.ComboCommonProximityRange;
         transform.position = status.transform.position + direction;
-    }
 
+        playersAim.CommandName = aimCommand?.CommandName;
 
-    void OnTriggerStay(Collider other)
-    {
-        //調べたり使用したりできるアイテムに絞る
-        if (other.gameObject.layer == searchableItemLayer)
+        if(aimCommand && input.Guard.NowPushDown != PushType.noPush)
         {
-
+            aimCommand.RunReaction();
         }
-
-        //自身の攻撃が当たるものに絞る
-        if (other.gameObject.layer == hitableAttackLayer)
-        {
-
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        
     }
 }
 

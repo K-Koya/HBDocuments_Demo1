@@ -13,8 +13,6 @@ public class AimSystemForMobs : AimSystem
     {
         TimelineInit();
         area = GetComponent<Collider>();
-        area.enabled = false;
-        status = GetComponentInParent<Status>();
         hitableAttackLayer = (byte)LayerMask.NameToLayer(hitableAttackLayerName);
         searchableItemLayer = (byte)LayerMask.NameToLayer(searchableItemLayerName);
     }

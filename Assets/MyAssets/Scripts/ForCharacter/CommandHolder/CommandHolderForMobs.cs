@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Chronos;
 
 /// <summary>
 /// キャラクターの子オブジェクトにあるコマンドをまとめ、使用する
@@ -39,6 +40,12 @@ public class CommandHolderForMobs : MyMonoBehaviour
     /// 照準システム
     /// </summary>
     protected AimSystem aim = default;
+
+    /// <summary>
+    /// 攻撃を受けるレイヤー
+    /// </summary>
+    [SerializeField, Tooltip("攻撃を受けるレイヤー")]
+    protected LayerMask layerOfReceiveAttack = default;
 
 
     /// <summary>
@@ -157,6 +164,25 @@ public class CommandHolderForMobs : MyMonoBehaviour
     }
 
 
+    /// <summary>
+    /// animatorイベントより呼び出して、攻撃範囲と攻撃を発生
+    /// </summary>
+    public virtual void CreateAttackArea()
+    {
+        if (running)
+        {
+            running.LookTarget = aim.transform.position;
+            aim.Info = running.Info;
+
+            //球状の当たり判定を出し、当たる相手を限定する
+            Collider[] hits = Physics.OverlapSphere(aim.transform.position, aim.Info.radius, layerOfReceiveAttack);
+            if (CompareTag("Enemy")) hits = hits.Where(h => h.CompareTag("Player") || h.CompareTag("Party")).ToArray();
+            else if (CompareTag("Party")) hits = hits.Where(h => h.CompareTag("Enemy")).ToArray();
+
+            //攻撃処理
+            Array.ForEach(hits, h => h.GetComponent<Damager>().Damaging(aim.Info, status));
+        }
+    }
 
 
     /// <summary>

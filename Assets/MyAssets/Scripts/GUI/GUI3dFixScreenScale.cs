@@ -35,7 +35,7 @@ public class GUI3dFixScreenScale : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        transform.localScale = firstScale * GetDistance() * 0.4f;
+        transform.localScale = firstScale * GetDistance() * 0.085f;
     }
 
 

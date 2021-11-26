@@ -287,7 +287,7 @@ public class Status : MonoBehaviour
     public bool IsDefeated { get => isDefeated; set => isDefeated = value; }
     public bool IsFlirting { get => isFlirting; set => isFlirting = value; }
     public float ResultSpeed { get => resultSpeed; set => resultSpeed = value; }
-    public AimSystemForPlayer Aim { get => aim; set => aim = value; }
+    //public AimSystemForPlayer Aim { get => aim; set => aim = value; }
 
 
     /// <summary>

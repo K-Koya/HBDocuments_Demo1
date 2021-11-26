@@ -27,10 +27,15 @@ public class MoveForPlayer : MoveForAbstruct
     /// </summary>
     [SerializeField]
     string playerCameraTag = "MainCamera";
-    
-    
 
-    
+    /// <summary>
+    /// 接地判定のための、当たり判定コライダーと地面との接触判定
+    /// </summary>
+    protected bool isHitCollider = false;
+
+
+
+
 
 
 
@@ -189,6 +194,7 @@ public class MoveForPlayer : MoveForAbstruct
             }
             else
             {
+                rb.velocity.YEqual();
                 moveDirectionVertical.YEqual();
             }
         }
@@ -236,5 +242,37 @@ public class MoveForPlayer : MoveForAbstruct
     void ResultSpeedCheck()
     {
         status.ResultSpeed = rb.velocity.ConvVector2_XZ().magnitude;
+    }
+
+    /// <summary>
+    /// 接地判定処理
+    /// </summary>
+    override protected void GroundedCheck()
+    {
+        status.IsGrounded = (isHitFootCollider && isHitCollider);
+    }
+
+    /// <summary>
+    /// 当たり判定コライダーに接触
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.layer == layerNumberOfGround)
+        {
+            isHitCollider = true;
+        }
+    }
+
+    /// <summary>
+    /// 当たり判定コライダーから離脱
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == layerNumberOfGround)
+        {
+            isHitCollider = false;
+        }
     }
 }

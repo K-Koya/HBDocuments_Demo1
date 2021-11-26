@@ -473,7 +473,7 @@ public class MoveForEnemy : MoveForAbstruct
         if (rb.velocity.y > FALLING_MAX_SPEED)
         {
             //地面に接地していない、もしくはNavMesh上にいない場合
-            if (!status.IsGrounded || !nav.isOnNavMesh)
+            if (!status.IsGrounded)
             {
                 //重力をかける
                 if(time.deltaTime > 0f) rb.AddForce(status.GravitySize * time.deltaTime / time.fixedDeltaTime, ForceMode.Acceleration);
@@ -487,5 +487,13 @@ public class MoveForEnemy : MoveForAbstruct
     void ResultSpeedCheck()
     {
         status.ResultSpeed = nav.velocity.ConvVector2_XZ().magnitude;
+    }
+
+    /// <summary>
+    /// 接地判定処理
+    /// </summary>
+    override protected void GroundedCheck()
+    {
+        status.IsGrounded = nav.isOnNavMesh;
     }
 }

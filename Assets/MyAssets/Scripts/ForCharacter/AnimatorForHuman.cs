@@ -16,30 +16,23 @@ public class AnimatorForHuman : AnimatorForCharacter
     protected static string animParamNameDoEyeBlink = "DoEyeBlink";
 
     [Header("IK用パラメータ")]
-    /// <summary>
-    /// 見るターゲット
-    /// </summary>
-    [SerializeField] Transform lookTarget = default;
-    /// <summary>
-    /// どれくらい見るか
-    /// </summary>
-    [SerializeField, Range(0f, 1f)] float lookTargetWeight = 0;
-    /// <summary>
-    /// 身体をどれくらい向けるか
-    /// </summary>
-    [SerializeField, Range(0f, 1f)] float lookTargetBodyWeight = 0;
-    /// <summary>
-    /// 頭をどれくらい向けるか
-    /// </summary>
-    [SerializeField, Range(0f, 1f)] float lookTargetHeadWeight = 0;
-    /// <summary>
-    /// 目をどれくらい向けるか
-    /// </summary>
-    [SerializeField, Range(0f, 1f)] float lookTargetEyesWeight = 0;
-    /// <summary>
-    /// 関節の動きをどれくらい制限するか
-    /// </summary>
-    [SerializeField, Range(0f, 1f)] float lookTargetClampWeight = 0;
+    [SerializeField, Tooltip("見るターゲット")] 
+    Transform lookTarget = default;
+
+    [SerializeField, Tooltip("どれくらい見るか"), Range(0f, 1f)] 
+    float lookTargetWeight = 0;
+
+    [SerializeField, Tooltip("身体をどれくらい向けるか"), Range(0f, 1f)] 
+    float lookTargetBodyWeight = 0;
+
+    [SerializeField, Tooltip("頭をどれくらい向けるか"), Range(0f, 1f)] 
+    float lookTargetHeadWeight = 0;
+
+    [SerializeField, Tooltip("目をどれくらい向けるか"), Range(0f, 1f)] 
+    float lookTargetEyesWeight = 0;
+
+    [SerializeField, Tooltip("関節の動きをどれくらい制限するか"), Range(0f, 1f)] 
+    float lookTargetClampWeight = 0;
 
     /* プロパティ */
     public Transform LookTarget { set => lookTarget = value; }

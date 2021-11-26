@@ -14,55 +14,41 @@ public class AimDrawer : MyMonoBehaviour
     AimMovement aimMovement = default;
 
     [Header("UIコンポーネント")]
-    /// <summary>
-    /// 照準画像表示用コンポーネント
-    /// </summary>
     [SerializeField, Tooltip("照準画像表示用コンポーネント")]
     Image aimImage = default;
-    /// <summary>
-    /// 最大射程距離まで距離表示を行ってくれるテキスト
-    /// </summary>
+
     [SerializeField, Tooltip("距離表示用テキストコンポーネント")]
     Text distanceText = default;
 
     [Header("照準画像用スプライト")]
-    /// <summary>
-    /// 射程外の時の照準画像
-    /// </summary>
-    [SerializeField, Tooltip("射程外の時の照準画像")]
-    Sprite aimSpriteOutOfRange = default;
-    /// <summary>
-    /// 近接攻撃範囲外の時の照準画像
-    /// </summary>
-    [SerializeField, Tooltip("近接攻撃範囲外の時の照準画像")]
-    Sprite aimSpriteOutOfProximity = default;
-    /// <summary>
-    /// 近接攻撃範囲内の時の照準画像
-    /// </summary>
-    [SerializeField, Tooltip("近接攻撃範囲内の時の照準画像")]
-    Sprite aimSpriteWithinProximity = default;
+    [SerializeField, Tooltip("特に効果のあるオブジェクトに照準していない時の照準画像")]
+    Sprite aimSpriteCommon = default;
+
+    [SerializeField, Tooltip("調べられるオブジェクトに照準している時の照準画像")]
+    Sprite aimSpriteAbleToSearch = default;
+
+    [SerializeField, Tooltip("攻撃可能なオブジェクトに照準しているの時の照準画像")]
+    Sprite aimSpriteAbleToAttack = default;
 
     [Header("各射程距離におけるシンボルカラー")]
-    /// <summary>
-    /// 射程外の時に使用するシンボルカラー
-    /// </summary>
     [SerializeField, Tooltip("射程外の時に使用するシンボルカラー")]
     Color colorOutOfRange = default;
-    /// <summary>
-    /// 近接攻撃範囲外の時に使用するシンボルカラー
-    /// </summary>
+
     [SerializeField, Tooltip("近接攻撃範囲外の時に使用するシンボルカラー")]
     Color colorOutOfProximity = default;
-    /// <summary>
-    /// 近接攻撃範囲内の時に使用するシンボルカラー
-    /// </summary>
+
     [SerializeField, Tooltip("近接攻撃範囲内の時に使用するシンボルカラー")]
     Color colorWithinProximity = default;
 
     [Header("入力ナビゲーションオブジェクト")]
+    [SerializeField, Tooltip("照準コマンド表示オブジェクト")]
+    GameObject aimCommandNav = default;
+
     /// <summary>
-    /// コンボ攻撃入力ナビゲーション用オブジェクト
+    /// 照準コマンドテキスト
     /// </summary>
+    Text aimCommandName = default;
+
     [SerializeField, Tooltip("コンボ攻撃入力ナビゲーション用オブジェクト")]
     GameObject comboAttackNav = default;
 
@@ -72,6 +58,7 @@ public class AimDrawer : MyMonoBehaviour
     {
         TimelineInit();
         aimMovement = GetComponentInParent<AimMovement>();
+        aimCommandName = aimCommandNav.GetComponentInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -88,33 +75,38 @@ public class AimDrawer : MyMonoBehaviour
             case DistanceType.OutOfRange:
                 {
                     distanceText.color = colorOutOfRange;
-                    aimImage.sprite = aimSpriteOutOfRange;
                     aimImage.color = colorOutOfRange;
-
-                    //コンボ攻撃用コマンドを非表示
-                    comboAttackNav.SetActive(false);
                     break;
                 }
             case DistanceType.OutOfProximity:
                 {
                     distanceText.color = colorOutOfProximity;
-                    aimImage.sprite = aimSpriteOutOfProximity;
                     aimImage.color = colorOutOfProximity;
-
-                    //コンボ攻撃用コマンドを非表示
-                    comboAttackNav.SetActive(false);
                     break;
                 }
             case DistanceType.WithinProximity:
                 {
                     distanceText.color = colorWithinProximity;
-                    aimImage.sprite = aimSpriteWithinProximity;
                     aimImage.color = colorWithinProximity;
-
-                    //攻撃対象に照準があっていれば、コンボ攻撃用コマンドを表示
-                    comboAttackNav.SetActive(aimMovement.FocusedStatus);
                     break;
                 }
+        }
+
+        if (aimMovement.CommandName != null)
+        {
+            aimCommandNav.SetActive(true);
+            aimCommandName.text = aimMovement.CommandName;
+            aimImage.sprite = aimSpriteAbleToSearch;
+        }
+        else
+        {
+            aimCommandNav.SetActive(false);
+            aimImage.sprite = aimSpriteCommon;
+        }
+
+        if (aimMovement.FocusedStatus && aimMovement.FocusedStatus.CompareTag("Enemy"))
+        {
+            aimImage.sprite = aimSpriteAbleToAttack;
         }
     }
 }

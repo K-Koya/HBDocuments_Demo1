@@ -37,40 +37,37 @@ public class Damager : MyMonoBehaviour
         if (IsPausing) return;
     }
 
-    void OnTriggerEnter(Collider other)
+    /// <summary>
+    /// ダメージ処理
+    /// </summary>
+    /// <param name="other"></param>
+    public void Damaging(AttackInfo info, Status attackerStatus)
     {
-        //こちらがプレイヤー側で相手が敵側であるか、こちらが敵側で相手がプレイヤー側であった場合に実行
-        if ((other.CompareTag("Enemy") && (CompareTag("Player") || CompareTag("Party")))
-            ||((other.CompareTag("Player") || other.CompareTag("Party")) && CompareTag("Enemy")))
+        
+        //攻撃してきた相手の照準情報を読み出し
+
+        //直接攻撃なら「敵のAttack - 自身のDefense」
+        //間接攻撃なら「敵のMagic - 自身のShield」を求める
+        short subtraction = (short)(info.isAttackingByMagic ?
+                                    attackerStatus.Magic - status.Shield
+                                    : attackerStatus.Attack - status.Defense);
+
+        //HPを減らす(0を下回らないようにする)
+        status.NowHP = (short)Mathf.Max(status.NowHP - (calculateDamage(subtraction) * info.powerRatio), 0.0f);
+
+        //攻撃が当たった時のエフェクトを、攻撃を受けたポイントに表示
+        if (hitEffectNormal) 
         {
-            //攻撃してきた相手の照準情報を読み出し(照準情報が読みだせなければ即抜ける)
-            AimSystem enemysAim = other.GetComponent<AimSystem>();
-            if (!enemysAim) return;
-            AttackInfo attackInfo = enemysAim.Info;
+            GameObject obj = Instantiate(hitEffectNormal);
+            obj.transform.position = transform.position;
+        }
 
-            //直接攻撃なら「敵のAttack - 自身のDefense」
-            //間接攻撃なら「敵のMagic - 自身のShield」を求める
-            short subtraction = (short)(attackInfo.isAttackingByMagic ?
-                                        enemysAim.Status.Magic - status.Shield
-                                        : enemysAim.Status.Attack - status.Defense);
-
-            //HPを減らす(0を下回らないようにする)
-            status.NowHP = (short)Mathf.Max(status.NowHP - (calculateDamage(subtraction) * attackInfo.powerRatio), 0.0f);
-
-            //攻撃が当たった時のエフェクトを、攻撃を受けたポイントに表示
-            if (hitEffectNormal) 
-            {
-                GameObject obj = Instantiate(hitEffectNormal);
-                obj.transform.position = other.ClosestPoint(other.transform.position);
-            }
-
-            //ダメージを受けた状態にする、HPが0になっていたら倒された状態にする
-            if (!status.IsDefeated)
-            {
-                status.IsDamaging = true;
-                if (status.NowHP <= 0) status.IsDefeated = true;
-                else status.IsFlirting = true;
-            }
+        //ダメージを受けた状態にする、HPが0になっていたら倒された状態にする
+        if (!status.IsDefeated)
+        {
+            status.IsDamaging = true;
+            if (status.NowHP <= 0) status.IsDefeated = true;
+            else status.IsFlirting = true;
         }
     }
 

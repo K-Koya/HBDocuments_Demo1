@@ -74,5 +74,6 @@ public class HPMeterController : MyMonoBehaviour
 
         //HPの余白表示が表示されている状態で、余白部分を減らすフラグが立っていれば減少処理
         if (beforeHPRatio > hpRatio && doBlankHP) hpMeterBlankImg.DOFillAmount(hpRatio, 0.8f).OnComplete(() => beforeHPRatio = hpRatio);
+        else if (beforeHPRatio < hpRatio) hpMeterBlankImg.fillAmount = hpRatio;
     }
 }
