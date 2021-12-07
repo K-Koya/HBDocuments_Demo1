@@ -494,6 +494,6 @@ public class MoveForEnemy : MoveForAbstruct
     /// </summary>
     override protected void GroundedCheck()
     {
-        status.IsGrounded = nav.isOnNavMesh;
+        base.GroundedCheck();
     }
 }

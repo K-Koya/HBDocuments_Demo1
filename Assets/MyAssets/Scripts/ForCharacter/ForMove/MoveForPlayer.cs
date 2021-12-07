@@ -38,7 +38,6 @@ public class MoveForPlayer : MoveForAbstruct
 
 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -81,8 +80,8 @@ public class MoveForPlayer : MoveForAbstruct
         //基本情報をローカルで定義
         //カメラ視点向き
         Transform cameraTransform = playerCamera.transform;
-        //カメラ視点の正面(y軸無視)
-        Vector3 forward = cameraTransform.forward.YEqual();
+        //カメラ視点の正面(重力軸無視)
+        Vector3 forward = Vector3.ProjectOnPlane(cameraTransform.forward, status.GravitySize);
         forward = forward.normalized;
         //カメラ視点の右方向
         Vector3 right = cameraTransform.right;
@@ -138,12 +137,12 @@ public class MoveForPlayer : MoveForAbstruct
                 }
                 else
                 {
-                    accelarateForRb = inputHorizontalDirection.normalized * status.RunAcceleration;
+                    accelarateForRb = inputHorizontalDirection.normalized * status.RunAcceleration * 0.3f;
                 }
             }
             else
             {
-                accelarateForRb = Vector3.zero.YEqual(rb.velocity.y);
+                accelarateForRb = Vector3.Project(rb.velocity, -status.GravitySize);
             }
         }
         //playerDirectionが0で移動入力がなく、かつ移動速度がzeroでなければ減速処理
@@ -153,22 +152,20 @@ public class MoveForPlayer : MoveForAbstruct
             if (Mathf.Abs(rb.velocity.x) < MIN_MOVE_DISTANCE 
                 && Mathf.Abs(rb.velocity.z) < MIN_MOVE_DISTANCE)
             {
-                rb.velocity = Vector3.zero.YEqual(rb.velocity.y);
+                rb.velocity = Vector3.Project(rb.velocity, -status.GravitySize);
             }
             //水平移動速度が小さくなければ減速処理
             else
             {
                 //減速(現在の移動方向と逆方向にaccelarateForRbをかける)
-                accelarateForRb = rb.velocity.YEqual().normalized * status.RunDeceleration;
+                accelarateForRb = Vector3.ProjectOnPlane(rb.velocity, status.GravitySize).normalized * status.RunDeceleration;
             }
         }
 
         //地上時は速度(向き)を、入力方向へ設定
         if (status.IsGrounded)
         {
-            float velY = rb.velocity.y;
-            Vector3 vel = Quaternion.FromToRotation(rb.velocity.YEqual(), transform.forward) * rb.velocity;
-            rb.velocity = vel.YEqual(velY);
+            rb.velocity = Quaternion.FromToRotation(Vector3.ProjectOnPlane(rb.velocity, status.GravitySize), transform.forward) * rb.velocity;
         }
 
         //加速度を設定
@@ -181,9 +178,10 @@ public class MoveForPlayer : MoveForAbstruct
     void VerticalMove()
     {
         //落下速度が落下の最高速度を上回っていない
-        if (rb.velocity.y > FALLING_MAX_SPEED)
+        if (Vector3.Project(rb.velocity, status.GravitySize).sqrMagnitude < FALLING_MAX_SPEED * FALLING_MAX_SPEED)
         {
             //重力をかける
+            //
             if (!status.IsGrounded)
             {
                 moveDirectionVertical = status.GravitySize;
@@ -194,8 +192,9 @@ public class MoveForPlayer : MoveForAbstruct
             }
             else
             {
-                rb.velocity.YEqual();
-                moveDirectionVertical.YEqual();
+                moveDirectionVertical = Vector3.zero;
+
+                if (!status.IsJumping) rb.velocity = Vector3.ProjectOnPlane(rb.velocity, status.GravitySize);
             }
         }
 
@@ -209,7 +208,8 @@ public class MoveForPlayer : MoveForAbstruct
             {
                 //ジャンプ上昇フラグを立てる
                 status.IsJumping = true;
-                //重力方向とは逆方向に、ジャンプ初速度を加算
+                //重力方向成分を打ち消したうえで、重力方向とは逆方向にジャンプ初速度を加算
+                rb.velocity = Vector3.ProjectOnPlane(rb.velocity, status.GravitySize);
                 rb.AddForce(-(status.GravitySize.normalized * status.JumpFirstSpeed), ForceMode.VelocityChange);
             }
         }
@@ -220,7 +220,7 @@ public class MoveForPlayer : MoveForAbstruct
                 && input.Jump.NowPushType == PushType.noPush)
             {
                 status.IsJumping = false;
-                rb.velocity = rb.velocity.YEqual();
+                rb.velocity = Vector3.ProjectOnPlane(rb.velocity, status.GravitySize);
             }
             else
             {
@@ -230,9 +230,6 @@ public class MoveForPlayer : MoveForAbstruct
                     status.IsJumping = false;
                 }
             }
-
-            //落下速度が落下最高速度を上回らないようにする
-            rb.velocity = rb.velocity.YEqual(Mathf.Max(FALLING_MAX_SPEED, rb.velocity.y));
         }
     }
 
@@ -241,7 +238,7 @@ public class MoveForPlayer : MoveForAbstruct
     /// </summary>
     void ResultSpeedCheck()
     {
-        status.ResultSpeed = rb.velocity.ConvVector2_XZ().magnitude;
+        status.ResultSpeed = Vector3.ProjectOnPlane(rb.velocity, status.GravitySize).magnitude;
     }
 
     /// <summary>
@@ -256,7 +253,7 @@ public class MoveForPlayer : MoveForAbstruct
     /// 当たり判定コライダーに接触
     /// </summary>
     /// <param name="collision"></param>
-    private void OnCollisionStay(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.layer == layerNumberOfGround)
         {
@@ -268,7 +265,7 @@ public class MoveForPlayer : MoveForAbstruct
     /// 当たり判定コライダーから離脱
     /// </summary>
     /// <param name="collision"></param>
-    private void OnCollisionExit(Collision collision)
+    void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.layer == layerNumberOfGround)
         {

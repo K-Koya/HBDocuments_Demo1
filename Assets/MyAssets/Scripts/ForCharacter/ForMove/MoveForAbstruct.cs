@@ -156,6 +156,7 @@ public abstract class MoveForAbstruct : MyMonoBehaviour
     protected bool isHitFootCollider = false;
     
 
+
     /// <summary>
     /// 水平移動力
     /// Updateで計算してFixUpdateでAddForceする
@@ -186,22 +187,14 @@ public abstract class MoveForAbstruct : MyMonoBehaviour
     }
 
 
-
     /// <summary>
-    /// 接地判定処理抽象メソッド
+    /// 接地判定処理
     /// </summary>
-    abstract protected void GroundedCheck();
-
-    /// <summary>
-    /// ナビメッシュ利用キャラ向けジャンプ処理
-    /// </summary>
-    /// <param name="from">移動元座標</param>
-    /// <param name="to">移動先座標</param>
-    /// <param name="maxHeight">最大高度</param>
-    protected void NavJumpOrder(Vector3 from, Vector3 to, float maxHeight)
+    virtual protected void GroundedCheck()
     {
-
+        status.IsGrounded = isHitFootCollider;
     }
+
 
     /// <summary>
     /// 接地判定用の足元コライダーに接触中トリガー
