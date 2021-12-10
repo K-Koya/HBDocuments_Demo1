@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: "\u30DF\u30CA\u30D2\u30C8_BlendShape\u9650\u5B9A"
+  m_Mask: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: skelton
+    m_Weight: 0
+  - m_Path: skelton/Root
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Eye_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Eye_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_0
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_0/Hair_0_001
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_0/Hair_0_001/Hair_0_002
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_1_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_1_L/Hair_1_L_001
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_1_L/Hair_1_L_001/Hair_1_L_002
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_1_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_1_R/Hair_1_R_001
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_1_R/Hair_1_R_001/Hair_1_R_002
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_2_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_2_L/Hair_2_L_001
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_2_L/Hair_2_L_001/Hair_2_L_002
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_2_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_2_R/Hair_2_R_001
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_2_R/Hair_2_R_001/Hair_2_R_002
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_3_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_3_L/Hair_3_L_001
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_3_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_3_R/Hair_3_R_001
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_4
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_4/Hair_4_001
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Neck/Head/Hair_4/Hair_4_001/Hair_4_002
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal__Thumb_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal__Thumb_L/Intermediate_Thumb_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal__Thumb_L/Intermediate_Thumb_L/Distal_Thumb_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Index_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Index_L/Intermediate_Index_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Index_L/Intermediate_Index_L/Distal_Index_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Little_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Little_L/Intermediate_Little_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Little_L/Intermediate_Little_L/Distal_Little_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Middle_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Middle_L/Intermediate_Middle_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Middle_L/Intermediate_Middle_L/Distal_Middle_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Ring_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Ring_L/Intermediate_Ring_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Proximal_Ring_L/Intermediate_Ring_L/Distal_Ring_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal__Thumb_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal__Thumb_R/Intermediate_Thumb_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal__Thumb_R/Intermediate_Thumb_R/Distal_Thumb_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Index_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Index_R/Intermediate_Index_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Index_R/Intermediate_Index_R/Distal_Index_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Little_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Little_R/Intermediate_Little_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Little_R/Intermediate_Little_R/Distal_Little_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Middle_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Middle_R/Intermediate_Middle_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Middle_R/Intermediate_Middle_R/Distal_Middle_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Ring_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Ring_R/Intermediate_Ring_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Proximal_Ring_R/Intermediate_Ring_R/Distal_Ring_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Under_Bust_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Under_Bust_L/Bust_Top_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Under_Bust_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Spine/Chest/UpperChest/Under_Bust_R/Bust_Top_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Upper_Leg_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Upper_Leg_L/Lower_Leg_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Upper_Leg_L/Lower_Leg_L/Foot_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Upper_Leg_L/Lower_Leg_L/Foot_L/Toes_L
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Upper_Leg_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Upper_Leg_R/Lower_Leg_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Upper_Leg_R/Lower_Leg_R/Foot_R
+    m_Weight: 0
+  - m_Path: skelton/Root/Hip/Upper_Leg_R/Lower_Leg_R/Foot_R/Toes_R
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Ring_L"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Ring_L/Ribbon_Ring_001_L"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Ring_L/Ribbon_Ring_001_L/Ribbon_Ring_002_L"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Ring_R"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Ring_R/Ribbon_Ring_001_R"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Ring_R/Ribbon_Ring_001_R/Ribbon_Ring_002_R"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Tail_L"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Tail_L/Ribbon_Tail_001_L"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Tail_L/Ribbon_Tail_001_L/Ribbon_Tail_002_L"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Tail_R"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Tail_R/Ribbon_Tail_001_R"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u30EA\u30DC\u30F3\u30BF\u30A4/Bone/Ribbon_Tail_R/Ribbon_Tail_001_R/Ribbon_Tail_002_R"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u9AEA\u7559\u3081"
+    m_Weight: 0
+  - m_Path: "skelton/\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2_\u9AEA\u7559\u3081/Bone_0"
+    m_Weight: 0
+  - m_Path: "\u30B9\u30E9\u30C3\u30AF\u30B9"
+    m_Weight: 0
+  - m_Path: "\u30C8\u30C3\u30D7\u30B9"
+    m_Weight: 0
+  - m_Path: "\u30EA\u30DC\u30F3\u30BF\u30A4"
+    m_Weight: 0
+  - m_Path: "\u7887\u306E\u9AEA\u7559\u3081"
+    m_Weight: 0
+  - m_Path: "\u80F4\u4F53"
+    m_Weight: 0
+  - m_Path: "\u9774_\u9774\u4E0B"
+    m_Weight: 0
+  - m_Path: "\u982D_\u77B3"
+    m_Weight: 0
+  - m_Path: "\u982D_\u9854"
+    m_Weight: 0
+  - m_Path: "\u982D_\u9AEA"
+    m_Weight: 0
+  - m_Path: "\u982D_\u9AEA\u751F\u3048\u969B"
+    m_Weight: 0
