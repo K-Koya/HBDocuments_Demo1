@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -84,35 +85,15 @@ public class CommandHolderForMobs : MyMonoBehaviour
         characterAnimator = GetComponent<Animator>();
 
         //子オブジェクトからコマンドコンポーネントを取得し、種類によって分配する
-        CommandAbstruct[] commands = GetComponentsInChildren<CommandAbstruct>();
-        foreach (CommandAbstruct command in commands)
-        {
-            //アニメーターのパスを提供
-            command.Animator = characterAnimator;
-            command.AccessoriesAnimators = accessoriesAnimators;
+        List<CommandAbstruct> commands = GetComponentsInChildren<CommandAbstruct>().ToList();
 
-            switch (command.CommandType)
-            {
-                case CommandType.Attack:
-                case CommandType.Support:
-                case CommandType.Heal:
-                    {
-                        commandList.Add(command);
-                        break;
-                    }
-                case CommandType.Combo:
-                    {
-                        combo = (ComboCommand)command;
-                        break;
-                    }
-                case CommandType.Slide:
-                    {
-                        dodge = command;
-                        break;
-                    }
-                default: break;
-            }
-        }
+        //アニメーターのパスを提供
+        commands.ForEach(c => { c.Animator = characterAnimator; c.AccessoriesAnimators = accessoriesAnimators; });
+        commands.Where(c => (c.CommandType == CommandType.Attack
+                                || c.CommandType == CommandType.Support
+                                || c.CommandType == CommandType.Heal)).ToList().ForEach(c => commandList.Add(c));
+        commands.Where(c => c.CommandType == CommandType.Combo).ToList().ForEach(c => combo = (ComboCommand)c);
+        commands.Where(c => c.CommandType == CommandType.Slide).ToList().ForEach(c => dodge = c);
     }
 
     // Update is called once per frame
